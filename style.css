@@ -1,0 +1,90 @@
+body {
+    background-color: white;
+	background-image: url(banner.png);
+	background-repeat: no-repeat;
+}
+/* adopted from w3schools https://www.w3schools.com/howto/howto_js_tabs.asp */
+.tab {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+  
+  /* style tab buttons */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+  
+  /* change color of tab buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+  
+  /* active tab class*/
+.tab button.active {
+    background-color: #ccc;
+}
+  
+  /* style content of actual page that tab takes you to */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+
+/* Make all buttons transparent
+Move into custom classes if this conflicts
+after merging tabs*/
+button {
+    border: none;
+    background-color: inherit;
+}
+
+/* General center styling used to test positioning
+Only used by profile image to fit and center in button */
+.center {
+    display: block;
+	padding-top: 50px;
+	margin-left: 15px;
+    width: 97%;
+}
+
+.prof-button {
+	display: block;
+	padding-top: 10px;
+	margin-left: 15px;
+    width: 90%;
+}
+.first-button {
+	display: block;
+	padding-top: 50px;
+	margin-left: 15px;
+    width: 97%;
+}
+
+.sub-menu-icon {
+	display: block;
+    width: 100%;
+}
+
+.hamburger {
+	position: absolute;
+	right: 20px;
+	top: 30px;
+	width: 80px;
+}
+.banner {
+	display: block;
+    width: 10%;
+}
