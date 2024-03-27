@@ -90,7 +90,7 @@ Only used by profile image to fit and center in button */
 }
 
 .container{
-position: relative;
+  position: relative;
   text-align: center;
   color: white;
 }
@@ -101,6 +101,26 @@ position: relative;
   left: 30px;
   font-family:arial;
   font-size: 20px;
+}
+
+.day-title{
+  position: absolute;
+  font-family:arial;
+  font-size: 15px;
+}
+
+.steps-pie{
+    position: absolute;
+    top: 100px;
+    left: 60px;
+  }
+
+.time-button {
+    background-color: goldenrod;
+    border-radius: 6px;
+    position: absolute;    
+    font-family:arial;
+    font-size: 13px;   
 }
 
 h1{
