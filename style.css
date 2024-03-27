@@ -88,3 +88,24 @@ Only used by profile image to fit and center in button */
 	display: block;
     width: 10%;
 }
+
+.container{
+position: relative;
+  text-align: center;
+  color: white;
+}
+
+.subtitle{
+  position: absolute;
+  top: 60px;
+  left: 30px;
+  font-family:arial;
+  font-size: 20px;
+}
+
+h1{
+    color: white;
+    font-family: arial;
+    font-size: 50px;
+    text-align: center;
+}
