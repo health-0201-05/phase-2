@@ -1,24 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistics</title>
+    <title>Exercises</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
-    <!-- bare html for now, will figure out later-->
+
     <div class="tabbar"> </div>
-    
-    <div class="topbar">
-        <h1>Your Workout</h1>
+
+    <div class="exerciseheader">
+        <h1 id="exh" class="extext">Your Workout</h1>
         <div class="weightgoal"></div>
     </div>
 
-    <div class="stepcount"></div>
+    <div class="stepcount">
+        <h2 class="ptext">Step Count Progress</h2>
+        <div class="progcontainer">
+            <!-- width calculated out of the container width-->
+            <div class="prog" style="width: 50%">
+                <p style="padding-top: 8px;">50/100 Steps</p>
+            </div>
+        </div>
 
-    <div class="excerciselist"></div>
+    </div>
+
+    <!-- dumb div wont take style from stylesheet, so style is here instead. -->
+    <div style="width: 30%; padding:18px">
+        <!-- idea: have this button have an arrow that will show which way itll open. IM NOT DOING THIS IN VANILLA HTML -->
+        <button type="button" class="collapsible">Workout 1</button>
+        <div class="collapsible-content">
+            <ul>
+                <!-- for now, hardcoded. can easily point to data LATER. -->
+                <li>Sit ups</li>
+                <li>Push ups</li>
+                <li>700 calorie starbucks drink</li>
+                <!-- also, not buttons. ALSO CAN BE DONE LATER WITH ACTUAL DATA-->
+            </ul>
+        </div>
+        
+
+    </div>
 
 </body>
+
 </html>
+<script>
+    //yes there is a better way to do this
+    //no im not doing it because we will be on react/angular anyways
+    
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
