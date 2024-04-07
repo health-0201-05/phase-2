@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 2 Prototype</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="hamburger-menu" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <a href="profile-page.html">
+        <button class="profile-button">
+            <img src="profile-icon.png" alt="Profile Image">
+        </button>
+    </a>
+    
+    <div class="top-bar"></div>
+    
+    <div class="menu" id="menu">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+    
+    <div class="overlay" onclick="toggleMenu()"></div>
+
+
+    <div class="gallery">
+        <div class="gallery-entries">
+            <button>Click Me</button>
+            <button>Click Me</button>
+            <button>Click Me</button>
+        </div>
+    </div>
+    
+    <button class="home-button" id="firsthome">Click Me</button>
+    <button class="home-button">Click Me</button>
+    <button class="home-button">Click Me</button>
+    <button class="home-button">Click Me</button>
+    
+</body>
+<script src="script.js"></script>
+</html>
