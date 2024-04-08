@@ -7,12 +7,12 @@
 .stepcount {
     border: 1px solid white;
     border-radius: 15px;
-    width: 30%;
+    width: 50%;
     margin: 25px
 }
 
 .progcontainer {
-    background-color: rgb(192, 192, 192);
+    background-color: rgb(145, 145, 145);
     width: 80%;
     border-radius: 15px;
     margin-left: 7%;
@@ -33,21 +33,25 @@
 
 .extext {
     color: white;
+    font-family: Arial;
 }
 
 
 #exh {
-    text-align: left;
-    margin-left: 7%;
+    text-align: center;
+
     color:white;
 }
 
 .exerciseheader {
-    margin-top: 250px;
+    margin-top: 25px;
     color:white;
+    width: 50%;
 
 }
-
+.ptext {
+    text-align: center;
+}
 .collapsible {
     background-color: #777;
     color: white;
@@ -76,9 +80,12 @@
     padding: 0 18px;
     display: none;
     overflow: hidden;
-    background-color: #f1f1f1;
+    background-color: #c7c7c7;
+    padding-bottom: 15px;
+    padding-top: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    font-family: arial;
 
 }
 
@@ -100,10 +107,11 @@
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 20px;
   }
   
   /* The Close Button */
@@ -120,3 +128,46 @@
     text-decoration: none;
     cursor: pointer;
   } 
+
+
+  .rec-container {
+    width:15%;
+    padding:18px;
+  }
+
+  #modalcreate {
+    background-color: #1fc173;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    /* outline: none; */
+    font-size: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+  #modalcreate:hover {
+    background-color: #0d6d3f;
+  }
+
+  .workoutadd {
+    background-color: #1fc173;
+    border: none;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+
+  }
+
+  .workoutrm {
+    background-color: #ff455e;
+    border: none;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+
+  }

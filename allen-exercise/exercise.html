@@ -8,79 +8,52 @@
     <link rel="stylesheet" href="exercise.css">
 </head>
 
+<script src="./exscript.js"></script>
+
 
 <body style="background-color: #141414;">
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
+        <!-- Modal content -->
+        <div class="modal-content">
+            
+            <span class="close">&times;</span>
+            <h2 class="extext" style="color:black">Suggested Workouts</h2>
+            <div class="modalcontain">
+
+            </div>
+        </div>
+
+    </div>
     <div class="exerciseheader">
-        <h1 id="exh" class="extext">Your Workout</h1>
+        <h1 id="exh" class="extext">Your Workouts</h1>
         <div class="weightgoal"></div>
     </div>
 
     <div class="stepcount">
-        <h2 class="ptext exh2">Step Count Progress</h2>
+        <h2 class="ptext exh2">  Step Count Progress</h2>
         <div class="progcontainer">
             <!-- width calculated out of the container width-->
-            <div class="prog" style="width: 10%">
+            <div class="prog" id="progbar" style="width: 10%">
                 <p style="padding-top: 8px;">50/100 Steps</p>
             </div>
         </div>
 
     </div>
 
-    <!-- dumb div wont take style from stylesheet, so style is here instead. -->
-    <div style="width: 30%; padding:18px">
-        <!-- idea: have this button have an arrow that will show which way itll open. hopefully, WE DO THIS IN REACT! -->
-        <button type="button" class="collapsible">Workout 1</button>
-        <div class="collapsible-content">
-            <ul>
-                <!-- for now, hardcoded. can easily point to data LATER. -->
-                <li><input type="checkbox" id="e1" name="e1" value="e1">
-                <label for="vehicle1"> 10 mile crip walk </label> </li>
-                <li><input type="checkbox" id="e2" name="e2" value="e3">
-                <label for="vehicle2"> 40 fruit by the foot dash</label></li>
-                <li><input type="checkbox" id="e3" name="e3" value="e3">
-                <label for="vehicle3"> do nothing </label></li>
-            </ul>
-        </div>
-        <button type="button" class="collapsible">Workout 1</button>
-        <div class="collapsible-content">
-            <ul>
-                <!-- for now, hardcoded. can easily point to data LATER. -->
-                <li><input type="checkbox" id="e21" name="e1" value="e1">
-                <label for="vehicle1"> 10 mile crip walk </label> </li>
-                <li><input type="checkbox" id="e22" name="e2" value="e3">
-                <label for="vehicle2"> 40 fruit by the foot dash</label></li>
-                <li><input type="checkbox" id="e23" name="e3" value="e3">
-                <label for="vehicle3"> do nothing </label></li>
-            </ul>
-        </div>
-
+    <div class="rec-container">
+        <button type="button" id="modalcreate">Recommended Workouts</button>
     </div>
 
+    <!-- dumb div wont take style from stylesheet, so style is here instead. -->
+    <div id="exercises-container" style="width: 30%; padding:18px">
+        <!-- idea: have this button have an arrow that will show which way itll open. hopefully, WE DO THIS IN REACT! -->
+
+    </div>
+    <script src="./exscript.js">
+        assignListeners();
+    </script>
 </body>
 
 </html>
-<script>
-    //yes there is a better way to do this
-    //no idc
-    
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-                this.style["border-bottom-left-radius"] = "15px";
-                this.style["border-bottom-right-radius"] = "15px";
-
-            } else {
-                content.style.display = "block";
-                this.style["border-bottom-left-radius"] = "0px";
-                this.style["border-bottom-right-radius"] = "0px";
-            }
-        });
-    }
-</script>
