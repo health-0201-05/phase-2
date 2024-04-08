@@ -9,7 +9,7 @@
 </head>
 
 
-<body>
+<body style="background-color: #141414;">
 
     <div class="exerciseheader">
         <h1 id="exh" class="extext">Your Workout</h1>
@@ -17,7 +17,7 @@
     </div>
 
     <div class="stepcount">
-        <h2 class="ptext h2ex">Step Count Progress</h2>
+        <h2 class="ptext exh2">Step Count Progress</h2>
         <div class="progcontainer">
             <!-- width calculated out of the container width-->
             <div class="prog" style="width: 50%">
@@ -42,7 +42,18 @@
                 <label for="vehicle3"> do nothing </label></li>
             </ul>
         </div>
-        
+        <button type="button" class="collapsible">Workout 1</button>
+        <div class="collapsible-content">
+            <ul>
+                <!-- for now, hardcoded. can easily point to data LATER. -->
+                <li><input type="checkbox" id="e1" name="e1" value="e1">
+                <label for="vehicle1"> 10 mile crip walk </label> </li>
+                <li><input type="checkbox" id="e2" name="e2" value="e3">
+                <label for="vehicle2"> 40 fruit by the foot dash</label></li>
+                <li><input type="checkbox" id="e3" name="e3" value="e3">
+                <label for="vehicle3"> do nothing </label></li>
+            </ul>
+        </div>
 
     </div>
 
@@ -62,8 +73,13 @@
             var content = this.nextElementSibling;
             if (content.style.display === "block") {
                 content.style.display = "none";
+                this.style["border-bottom-left-radius"] = "15px";
+                this.style["border-bottom-right-radius"] = "15px";
+
             } else {
                 content.style.display = "block";
+                this.style["border-bottom-left-radius"] = "0px";
+                this.style["border-bottom-right-radius"] = "0px";
             }
         });
     }
