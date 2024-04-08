@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="title-bar">
+        <h1>Statistics</h1>
+    </div>
+
+    <div class="container" id="summary">
+        <div class="subtitle"><b>Summary</b></div>
+        <div class="day-title"><b>Today</b></div>
+        <button class="time-button" style="right: 190px"><b>Day</b></button>
+        <button class="time-button" style="right: 110px; width: 62px" onclick="weekClickSummary()"><b>Week</b></button>
+        <button class="time-button" style="right: 20px; width: 72px"><b>Month</b></button>
+    </div>
+
+    <div class="container" id="workouts">
+        <div class="subtitle"><b>Workouts</b></div>
+        <div class="day-title"><b>Today</b></div>
+        <button class="time-button" style="right: 190px"><b>Day</b></button>
+        <button class="time-button" style="right: 110px; width: 62px" onclick="weekClickWorkouts()"><b>Week</b></button>
+        <button class="time-button" style="right: 20px; width: 72px"><b>Month</b></button>
+        <div style="border-radius:5px;color:white;font-family:arial;font-size:20px;text-align:left;position:absolute;top:140px;left:100px"> 
+            You completed a 1.0 mile walk!
+        </div>
+        <img src="walk.png" height="50" style="position: absolute;top:130px;left:40px;">
+
+    </div>
+
+    <div class="container">
+        <div class="subtitle"><b>Nutrition</b></div>
+    </div>
+
+    <div class="container">
+        <div class="subtitle"><b>Trends</b></div>
+    </div>
+    <script src=".\script.js"></script>
+</body>
+</html>
