@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="nutrition_styles.css">
+    <title>Nutrition Tracker</title>
+</head>
+<body>
+    <div class="nutrition-container">
+        <h1>Nutrition</h1>
+        <div class="tracker">
+            <div class="tracker-item">
+                <label for="calories">Calories</label>
+                <progress id="calories" value="800" max="2000"></progress>
+                <span>800 of 2000</span>
+            </div>
+            <div class="tracker-item">
+                <label for="sugar">Sugar</label>
+                <progress id="sugar" value="5" max="25"></progress>
+                <span>5 of 25</span>
+            </div>
+        </div>
+        <div class="meal" id="mealDetailsTrigger">
+            <h2>Buffalo Chicken Rice</h2>
+            <div class="meal-info">
+                <div class="info-item">
+                    <span>Calories</span>
+                    <span>600</span>
+                </div>
+                <div class="info-item">
+                    <span>Carbs</span>
+                    <span>52g</span>
+                </div>
+                <div class="info-item">
+                    <span>Protein</span>
+                    <span>20g</span>
+                </div>
+                <div class="info-item">
+                    <span>Sugar</span>
+                    <span>1g</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="mealDetailsScreen" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModal">&times;</span>
+            <h1>More Details</h1>
+            <p>This screen could include more detailed nutritional information, preparation instructions, or other relevant details about the Buffalo Chicken Rice.</p>
+        </div>
+    </div>
+
+    <script src="nutrition_script.js"></script>
+</body>
+</html>
