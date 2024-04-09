@@ -41,8 +41,13 @@
 
     </div>
 
-    <div class="container">
+    <div class="container" id = "nutrition" style = "overflow-y:scroll;">
         <div class="subtitle"><b>Nutrition</b></div>
+        <div class="day-title"><b>Today</b></div>
+        <canvas id="consumePie" style="width:100%;max-width:300px;position:absolute;top:30%;left:-5%" onclick = "macroView()"></canvas>
+        <canvas id ="burnPie" style="width:100%;max-width:300px;position:absolute;top:30%;left:50%"></canvas>
+        <div class="step-count"><b>Consumed : 1110/2000 cals</b></div>
+        <div class="exercise-count"><b>Burned : 120/300 cals</b></div>
     </div>
 
     <div class="container">
