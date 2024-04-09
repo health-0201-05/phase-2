@@ -24,30 +24,33 @@
         <canvas id="stepsPie" style="width:100%;max-width:300px;position:absolute;top:30%;left:-5%"></canvas>
         <canvas id ="exerPie" style="width:100%;max-width:300px;position:absolute;top:30%;left:50%"></canvas>
         <div class="step-count"><b>Steps : 7500/10000</b></div>
-        <div class="exercise-count"><b>Exercise : 20/60 min</b></div>
+        <div class="exercise-count"><b>Exercise : 50/60 min</b></div>
 
     </div>
 
-    <div class="container" id="workouts" style = "overflow-y:scroll;">
+    <div class="container" id="workouts">
         <div class="subtitle"><b>Workouts</b></div>
         <div class="day-title"><b>Today</b></div>
         <button class="time-button" style="right: 190px"><b>Day</b></button>
         <button class="time-button" style="right: 110px; width: 62px" onclick="weekClick('workouts')"><b>Week</b></button>
         <button class="time-button" style="right: 20px; width: 72px"><b>Month</b></button>
         <div style="color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:110px;left:80px"> 
-            You completed a 1.0 mile walk
+            You completed a 1.8 mile run
         </div>
-        <img src="walk.png" height="50" style="position: absolute;top:100px;left:20px;">
-
+        <img src="run.png" height="50" style="position: absolute;top:100px;left:20px;">
+        <div style="color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:180px;left:80px">
+            You completed a 1.0 mile swim
+        </div>
+        <img src="swim.png" height="50" style="position: absolute;top:170px;left:20px;">
     </div>
 
-    <div class="container" id = "nutrition" style = "overflow-y:scroll;">
+    <div class="container" id = "nutrition">
         <div class="subtitle"><b>Nutrition</b></div>
         <div class="day-title"><b>Today</b></div>
         <canvas id="consumePie" style="width:100%;max-width:300px;position:absolute;top:30%;left:-5%" onclick = "macroView()"></canvas>
         <canvas id ="burnPie" style="width:100%;max-width:300px;position:absolute;top:30%;left:50%"></canvas>
         <div class="step-count"><b>Consumed : 1110/2000 cals</b></div>
-        <div class="exercise-count"><b>Burned : 120/300 cals</b></div>
+        <div class="exercise-count"><b>Burned : 210/300 cals</b></div>
     </div>
 
     <div class="container">

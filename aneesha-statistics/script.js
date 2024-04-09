@@ -15,13 +15,16 @@ function dayClick(id){
         + "<canvas id=\"stepsPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:-5%\"></canvas>"
         + "<canvas id =\"exerPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:50%\"></canvas>"
         + "<div class=\"step-count\"><b>Steps : 7500/10000</b></div>"
-        + "<div class=\"exercise-count\"><b>Exercise : 20/60 min</b></div>";
+        + "<div class=\"exercise-count\"><b>Exercise : 50/60 min</b></div>";
     } else if (id === 'workouts'){
         innerhtml = "<div class=\"subtitle\"><b>Workouts</b></div>"
         + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('workouts')\"><b>Week</b></button>"
-        + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:110px;left:80px\">" 
-        + "You completed a 1.0 mile walk</div>"
-        + "<img src=\"walk.png\" height=\"50\" style=\"position: absolute;top:100px;left:20px;\">";
+        + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:110px;left:80px\">"
+        + "You completed a " + weekWorkouts[6][3] + " " + weekWorkouts[6][1] + "</div>" 
+        + "<img src=\"" + weekWorkouts[6][1] + ".png\" height=\"50\" style=\"position: absolute;top:100px;left:20px;\">"
+        + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:180px;left:80px\">"
+        + "You completed a " + weekWorkouts[6][4] + " " + weekWorkouts[6][2] + "</div>" 
+        + "<img src=\"" + weekWorkouts[6][2] + ".png\" height=\"50\" style=\"position:absolute;top:170px;left:20px;\">";
     }
     innerhtml += "<div class=\"day-title\"><b>Today</b></div>"
     + "<button class=\"time-button\" style=\"right: 190px\"><b>Day</b></button>"
@@ -36,7 +39,7 @@ function dayClick(id){
 function weekdayClick(id, day){
     // displays in week view of workouts module
     weekWorkouts = [
-        ['Sunday', 'yoga', '75 minute'],
+        ['Sunday', 'yoga', '40 minute'],
         ['Monday', 'run', 'swim', '1.2 mile', '0.5 mile'],
         ['Tuesday', 'run', 'yoga', '2.0 mile', '30 minute'],
         ['Wednesday', 'run', 'stairmaster', 'elliptical', 'yoga', '1.5 mile', '30 minute', '30 minute', '15 minute'],
@@ -50,9 +53,34 @@ function weekdayClick(id, day){
         innerhtml = "<div class=\"subtitle\"><b>Summary</b></div>"
         + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('summary')\"><b>Week</b></button>"
         + "<canvas id=\"stepsPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:-5%\"></canvas>"
-        + "<canvas id =\"exerPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:50%\"></canvas>"
-        + "<div class=\"step-count\"><b>Steps : 7500/10000</b></div>"
-        + "<div class=\"exercise-count\"><b>Exercise : 20/60 min</b></div>";
+        + "<canvas id =\"exerPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:50%\"></canvas>";
+        
+        switch(day){
+            case 'Sunday':
+                innerhtml += 
+                "<div class=\"step-count\"><b>Steps : 1500/10000</b></div> <div class=\"exercise-count\"><b>Exercise : 40/60 min</b></div>";
+                break;
+            case 'Monday':
+                innerhtml += "<div class=\"step-count\"><b>Steps : 9000/10000</b></div> <div class=\"exercise-count\"><b>Exercise : 45/60 min</b></div>";
+                break;
+            case 'Tuesday':
+                innerhtml += "<div class=\"step-count\"><b>Steps : 10000/10000</b></div> <div class=\"exercise-count\"><b>Exercise : 60/60 min</b></div>";
+                break;
+            case 'Wednesday':
+                innerhtml += "<div class=\"step-count\"><b>Steps : 10000/10000</b></div> <div class=\"exercise-count\"><b>Exercise : 60/60 min</b></div>";
+                break;
+            case 'Thursday':
+                innerhtml += "<div class=\"step-count\"><b>Steps : 8500/10000</b></div> <div class=\"exercise-count\"><b>Exercise : 60/60 min</b></div>";
+                break;
+            case 'Friday':
+                innerhtml += "<div class=\"step-count\"><b>Steps : 2000/10000</b></div> <div class=\"exercise-count\"><b>Exercise : 15/60 min</b></div>";
+                break;
+            case 'Saturday':
+                innerhtml += "<div class=\"step-count\"><b>Steps : 7500/10000</b></div> <div class=\"exercise-count\"><b>Exercise : 50/60 min</b></div>";
+                break;
+            default: 
+
+        }
 
         innerhtml += "<div class=\"day-title\"><b>" + day + "</b></div>"
         + "<button class=\"time-button\" style=\"right: 190px\" onclick=\"dayClick('summary')\"><b>Day</b></button>"
@@ -175,13 +203,12 @@ function back(){
     "<div class=\"subtitle\"><b>Nutrition</b></div> <div class=\"day-title\"><b>Today</b></div>"
     + "<canvas id=\"consumePie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:-5%\" onclick = \"macroView()\"></canvas>"
     + "<canvas id =\"burnPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:50%\"></canvas>"
-    + "<div class=\"step-count\"><b>Consumed : 1110/2000</b></div> <div class=\"exercise-count\"><b>Burned : 120/300 min</b></div>";
+    + "<div class=\"step-count\"><b>Consumed : 1110/2000 cals</b></div> <div class=\"exercise-count\"><b>Burned : 210/300 cals</b></div>";
 
     drawCharts('today','nutrition');
 }
 
 function drawCharts(day, id){
-    console.log(id)
     var ctxstep = document.getElementById("stepsPie");
     var ctxex = document.getElementById("exerPie");
     var ctxconsume = document.getElementById("consumePie");
@@ -191,34 +218,40 @@ function drawCharts(day, id){
     var mins = [33, 67];
     var label = ['', ''];
     var consumed = [55, 65];
-    var burned = [40, 60];
+    var burned = [70, 30];
 
     switch(day){
         case 'Sunday':
             steps = [15, 85];
-
+            mins = [67, 33];
             break;
         case 'Monday': 
-            steps = [100, 0];
+            steps = [90, 10];
+            mins = [75,25];
             break;67
         case 'Tuesday': 
-            steps = [80, 20];
+            steps = [100, 0];
+            mins = [100, 0];
             break;
         case 'Wednesday':
             steps = [100, 0];
+            mins = [100, 0];
             break;
         case 'Thursday':
-            steps = [67, 33];
+            steps = [85, 15];
+            mins = [100, 0];
             break;
         case 'Friday':
-            steps = [75, 25];
+            steps = [20, 80];
+            mins = [25, 75];
             break;
         case 'Saturday':
-            steps = [10, 90];
+            steps = [75, 25];
+            mins = [83, 17];
             break;
         default:
             steps = [75,25];
-            mins = [33, 67]
+            mins = [83, 17]
     }
 
     // steps counter ring

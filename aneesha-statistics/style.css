@@ -101,6 +101,7 @@ Only used by profile image to fit and center in button */
     text-align: center;
     background-color: #333333;
     border-radius: 10px;
+    overflow-y: scroll;
 }
 
 .subtitle{
