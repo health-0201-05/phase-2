@@ -18,29 +18,120 @@ function dayClick(id){
         + "<div class=\"exercise-count\"><b>Exercise : 20/60 min</b></div>";
     } else if (id === 'workouts'){
         innerhtml = "<div class=\"subtitle\"><b>Workouts</b></div>"
-        + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('workouts')\"><b>Week</b></button>";
+        + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('workouts')\"><b>Week</b></button>"
+        + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:110px;left:80px\">" 
+        + "You completed a 1.0 mile walk</div>"
+        + "<img src=\"walk.png\" height=\"50\" style=\"position: absolute;top:100px;left:20px;\">";
     }
     innerhtml += "<div class=\"day-title\"><b>Today</b></div>"
     + "<button class=\"time-button\" style=\"right: 190px\"><b>Day</b></button>"
     + "<button class=\"time-button\" style=\"right: 20px; width: 72px\"><b>Month</b></button>";
     document.getElementById(id).innerHTML = innerhtml;
-    drawCharts();
+    
+    if (id === 'summary'){
+        drawCharts();  
+    }
 }
 
-function weekdayClick(day){
-    document.getElementsByClassName('time-button').innerHTML = "";
-    innerhtml = "<div class=\"subtitle\"><b>Summary</b></div>"
-    + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('summary')\"><b>Week</b></button>"
-    + "<canvas id=\"stepsPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:-5%\"></canvas>"
-    + "<canvas id =\"exerPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:50%\"></canvas>"
-    + "<div class=\"step-count\"><b>Steps : 7500/10000</b></div>"
-    + "<div class=\"exercise-count\"><b>Exercise : 20/60 min</b></div>";
+function weekdayClick(id, day){
+    // displays in week view of workouts module
+    weekWorkouts = [
+        ['Sunday', 'yoga', '75 minute'],
+        ['Monday', 'run', 'swim', '1.2 mile', '0.5 mile'],
+        ['Tuesday', 'run', 'yoga', '2.0 mile', '30 minute'],
+        ['Wednesday', 'run', 'stairmaster', 'elliptical', 'yoga', '1.5 mile', '30 minute', '30 minute', '15 minute'],
+        ['Thursday', 'walk', '3.75 mile'],
+        ['Friday', 'walk', '1.0 mile'],
+        ['Saturday', 'run', 'swim', '1.8 mile', '1.0 mile']
+    ];
 
-    innerhtml += "<div class=\"day-title\"><b>" +day+ "</b></div>"
-    + "<button class=\"time-button\" style=\"right: 190px\" onclick=\"dayClick('summary')\"><b>Day</b></button>"
-    + "<button class=\"time-button\" style=\"right: 20px; width: 72px\"><b>Month</b></button>";
-    document.getElementById('summary').innerHTML = innerhtml;
-    drawCharts();
+    if(id === 'summary'){
+        document.getElementsByClassName('time-button').innerHTML = "";
+        innerhtml = "<div class=\"subtitle\"><b>Summary</b></div>"
+        + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('summary')\"><b>Week</b></button>"
+        + "<canvas id=\"stepsPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:-5%\"></canvas>"
+        + "<canvas id =\"exerPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:50%\"></canvas>"
+        + "<div class=\"step-count\"><b>Steps : 7500/10000</b></div>"
+        + "<div class=\"exercise-count\"><b>Exercise : 20/60 min</b></div>";
+
+        innerhtml += "<div class=\"day-title\"><b>" +day+ "</b></div>"
+        + "<button class=\"time-button\" style=\"right: 190px\" onclick=\"dayClick('summary')\"><b>Day</b></button>"
+        + "<button class=\"time-button\" style=\"right: 20px; width: 72px\"><b>Month</b></button>";
+        document.getElementById(id).innerHTML = innerhtml;
+        drawCharts();
+    } else if (id === 'workouts') {
+        document.getElementById(id).innerHTML = "";
+        document.getElementById(id).innerHTML = 
+        "<div class=\"subtitle\"><b>Workouts</b></div> <div class=\"day-title\"><b>" + day + "</b></div>"
+        + "<button class=\"time-button\" style=\"right: 190px\" onclick=\"dayClick('workouts')\"><b>Day</b></button>"
+        + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('workouts')\"><b>Week</b></button>"
+        + "<button class=\"time-button\" style=\"right: 20px; width: 72px\"><b>Month</b></button>";
+       
+        switch(day){
+            case 'Sunday':
+                document.getElementById(id).innerHTML +=
+                " <div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:110px;left:80px\">"
+                + "You completed a " + weekWorkouts[0][2] + " " + weekWorkouts[0][1] + " session</div>" 
+                + "<img src=\"" + weekWorkouts[0][1] + ".png\" height=\"50\" style=\"position: absolute;top:100px;left:20px;\">";
+                break;
+            case 'Monday': 
+                document.getElementById(id).innerHTML +=
+                "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:110px;left:80px\">"
+                + "You completed a " + weekWorkouts[1][3] + " " + weekWorkouts[1][1] + "</div>" 
+                + "<img src=\"" + weekWorkouts[1][1] + ".png\" height=\"50\" style=\"position: absolute;top:100px;left:20px;\">"
+                + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:180px;left:80px\">"
+                + "You completed a " + weekWorkouts[1][4] + " " + weekWorkouts[1][2] + "</div>" 
+                + "<img src=\"" + weekWorkouts[1][2] + ".png\" height=\"50\" style=\"position: absolute;top:170px;left:20px;\">";
+                break;
+            case 'Tuesday':
+                document.getElementById(id).innerHTML +=
+                "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:110px;left:80px\">"
+                + "You completed a " + weekWorkouts[2][3] + " " + weekWorkouts[2][1] + "</div>" 
+                + "<img src=\"" + weekWorkouts[2][1] + ".png\" height=\"50\" style=\"position: absolute;top:100px;left:20px;\">"
+                + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:180px;left:80px\">"
+                + "You completed a " + weekWorkouts[2][4] + " " + weekWorkouts[2][2] + " session</div>" 
+                + "<img src=\"" + weekWorkouts[2][2] + ".png\" height=\"50\" style=\"position: absolute;top:170px;left:20px;\">";
+                break;
+            case 'Wednesday':
+                document.getElementById(id).innerHTML +=
+                "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:110px;left:80px\">"
+                + "You completed a " + weekWorkouts[3][5] + " " + weekWorkouts[3][1] + "</div>" 
+                + "<img src=\"" + weekWorkouts[3][1] + ".png\" height=\"50\" style=\"position: absolute;top:100px;left:20px;\">"
+                + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:180px;left:80px\">"
+                + "You completed a " + weekWorkouts[3][6] + " " + weekWorkouts[3][2] + " session</div>" 
+                + "<img src=\"" + weekWorkouts[3][2] + ".png\" height=\"50\" style=\"position: absolute;top:170px;left:20px;\">"
+                + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:250px;left:80px\">"
+                + "You completed a " + weekWorkouts[3][7] + " " + weekWorkouts[3][3] + " session</div>" 
+                + "<img src=\"" + weekWorkouts[3][3] + ".png\" height=\"50\" style=\"position: absolute;top:240px;left:20px;\">"
+                + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:320px;left:80px\">"
+                + "You completed a " + weekWorkouts[3][8] + " " + weekWorkouts[3][4] + " session</div>" 
+                + "<img src=\"" + weekWorkouts[3][4] + ".png\" height=\"50\" style=\"position: absolute;top:310px;left:20px;\">";
+                break;
+            case 'Thursday':
+                document.getElementById(id).innerHTML +=
+                "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:110px;left:80px\">"
+                + "You completed a " + weekWorkouts[4][2] + " " + weekWorkouts[4][1] + "</div>" 
+                + "<img src=\"" + weekWorkouts[4][1] + ".png\" height=\"50\" style=\"position: absolute;top:100px;left:20px;\">";
+                break;
+            case 'Friday':
+                document.getElementById(id).innerHTML +=
+                "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:110px;left:80px\">"
+                + "You completed a " + weekWorkouts[5][2] + " " + weekWorkouts[5][1] + "</div>" 
+                + "<img src=\"" + weekWorkouts[5][1] + ".png\" height=\"50\" style=\"position: absolute;top:100px;left:20px;\">";
+                break;
+            case 'Saturday':
+                document.getElementById(id).innerHTML +=
+                "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:110px;left:80px\">"
+                + "You completed a " + weekWorkouts[6][3] + " " + weekWorkouts[6][1] + "</div>" 
+                + "<img src=\"" + weekWorkouts[6][1] + ".png\" height=\"50\" style=\"position: absolute;top:100px;left:20px;\">"
+                + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:180px;left:80px\">"
+                + "You completed a " + weekWorkouts[6][4] + " " + weekWorkouts[6][2] + "</div>" 
+                + "<img src=\"" + weekWorkouts[6][2] + ".png\" height=\"50\" style=\"position: absolute;top:170px;left:20px;\">";
+                break;
+        }
+        
+    }
+    
 }
 
 function weekClick(id){
@@ -54,13 +145,13 @@ function weekClick(id){
     }
     innerhtml += "<button class=\"time-button\" style=\"right: 110px; width: 62px\"><b>Week</b></button>"
     + "<button class=\"time-button\" style=\"right: 20px; width: 72px\"><b>Month</b></button>"
-    + "<button class=\"day-button\" style=\"left:30px\" onclick = \"weekdayClick('Sunday')\"><b>Su</b></button>"
-    + "<button class=\"day-button\" style=\"left:110px\" onclick = \"weekdayClick('Monday')\"><b>M</b></button>"
-    + "<button class=\"day-button\" style=\"left:190px\" onclick = \"weekdayClick('Tuesday')\"><b>T</b></button>"
-    + "<button class=\"day-button\" style=\"left:270px\" onclick = \"weekdayClick('Wednesday')\"><b>W</b></button>"
-    + "<button class=\"day-button\" style=\"left:350px\" onclick = \"weekdayClick('Thursday')\"><b>Th</b></button>"
-    + "<button class=\"day-button\" style=\"left:430px\" onclick = \"weekdayClick('Friday')\"><b>F</b></button>"
-    + "<button class=\"day-button\" style=\"left:510px\" onclick = \"weekdayClick('Saturday')\"><b>S</b></button>";
+    + "<button class=\"day-button\" style=\"left:30px\" onclick = \"weekdayClick('" + id + "','Sunday')\"><b>Su</b></button>"
+    + "<button class=\"day-button\" style=\"left:110px\" onclick = \"weekdayClick('" + id + "','Monday')\"><b>M</b></button>"
+    + "<button class=\"day-button\" style=\"left:190px\" onclick = \"weekdayClick('" + id + "','Tuesday')\"><b>T</b></button>"
+    + "<button class=\"day-button\" style=\"left:270px\" onclick = \"weekdayClick('" + id + "','Wednesday')\"><b>W</b></button>"
+    + "<button class=\"day-button\" style=\"left:350px\" onclick = \"weekdayClick('" + id + "','Thursday')\"><b>Th</b></button>"
+    + "<button class=\"day-button\" style=\"left:430px\" onclick = \"weekdayClick('" + id + "','Friday')\"><b>F</b></button>"
+    + "<button class=\"day-button\" style=\"left:510px\" onclick = \"weekdayClick('" + id + "','Saturday')\"><b>S</b></button>";
 
     document.getElementById(id).innerHTML = innerhtml;
 }
@@ -72,6 +163,7 @@ function drawCharts(){
     var steps = [75, 25];
     var steplabel = ['', ''];
 
+    // steps counter ring
     var myChart = new Chart(ctxstep, {
     type: 'doughnut',
     data: {
