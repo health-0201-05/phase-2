@@ -95,7 +95,7 @@ Only used by profile image to fit and center in button */
     font-size: 16px;
     margin: 30px auto;
     width: 90%;
-    height: 210px;
+    height: 250px;
     position: relative;
     text-align: center;
     background-color: #333333;
@@ -108,6 +108,24 @@ Only used by profile image to fit and center in button */
   left: 10px;
   font-family:arial;
   font-size: 30px;
+  color: white;
+}
+
+.step-count{
+  position: absolute;
+  top: 240px;
+  left: 40px;
+  font-family:arial;
+  font-size: 18px;
+  color: white;
+}
+
+.exercise-count{
+  position: absolute;
+  top: 240px;
+  right: 60px;
+  font-family:arial;
+  font-size: 18px;
   color: white;
 }
 
@@ -137,15 +155,15 @@ Only used by profile image to fit and center in button */
   }
 
 .time-button{
-    background-color: #FF455E; /* Green */
-	color: black;
-	padding: 5px 8px;
-	text-align: center;
-	display: block;
-	margin: 10px auto;
-	border-radius: 10px;
-	width: 50px; 
-	height: 35px;
+    background-color: #FF455E; 
+	  color: black;
+	  padding: 5px 8px;
+	  text-align: center;
+	  display: block;
+	  margin: 10px auto;
+	  border-radius: 10px;
+	  width: 50px; 
+	  height: 35px;
     font-size:20px;
     top:10px;
     position: absolute;
@@ -165,6 +183,7 @@ h1{
 h2 {
   font-family: Arial;
 }
+
 .stepcount {
   border: 1px solid black;
   border-radius: 15px;
@@ -225,3 +244,10 @@ h2 {
   overflow: hidden;
   background-color: #f1f1f1;
 }
+
+canvas {
+  position:absolute;
+  top: 10px;
+  left: 1px;
+}
+
