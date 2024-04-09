@@ -1,43 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('JavaScript loaded!');
+    // draw today's donut charts (summary and nutrition)
     drawCharts('', 'start');
     // open text tab first by default
     var item = document.getElementById('defaultOpen');
     //item.click();
 });
 
+// clicking the "Day" button
 function dayClick(id){
     document.getElementById(id).innerHTML = "";
     innerhtml = "";
+    // if "Day" button is clicked on the Summary module, display the day's donut chart 
     if(id === 'summary'){
         innerhtml = "<div class=\"subtitle\"><b>Summary</b></div>"
+        // add a "Week" button that functions specifically for the Summary module
         + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('summary')\"><b>Week</b></button>"
         + "<canvas id=\"stepsPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:-5%\"></canvas>"
         + "<canvas id =\"exerPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:50%\"></canvas>"
         + "<div class=\"step-count\"><b>Steps : 7500/10000</b></div>"
         + "<div class=\"exercise-count\"><b>Exercise : 50/60 min</b></div>";
-    } else if (id === 'workouts'){
+    } else if (id === 'workouts'){ //if Day button clicked on Workouts module, display the day's workouts
         innerhtml = "<div class=\"subtitle\"><b>Workouts</b></div>"
+        // add a "Week" button that functions specifically for the Workouts module
         + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('workouts')\"><b>Week</b></button>"
         + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:110px;left:80px\">"
-        + "You completed a " + weekWorkouts[6][3] + " " + weekWorkouts[6][1] + "</div>" 
-        + "<img src=\"" + weekWorkouts[6][1] + ".png\" height=\"50\" style=\"position: absolute;top:100px;left:20px;\">"
+        + "You completed a 1.8 mile run</div>" 
+        + "<img src=\"run.png\" height=\"50\" style=\"position: absolute;top:100px;left:20px;\">"
         + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:180px;left:80px\">"
-        + "You completed a " + weekWorkouts[6][4] + " " + weekWorkouts[6][2] + "</div>" 
-        + "<img src=\"" + weekWorkouts[6][2] + ".png\" height=\"50\" style=\"position:absolute;top:170px;left:20px;\">";
+        + "You completed a 1.0 mile swim</div>" 
+        + "<img src=\"swim.png\" height=\"50\" style=\"position:absolute;top:170px;left:20px;\">";
     }
+    // summary and workouts both need a "Today" subtitle as well as the Day and Month button
+    // pressing day button multiple times in a row does nothing
     innerhtml += "<div class=\"day-title\"><b>Today</b></div>"
     + "<button class=\"time-button\" style=\"right: 190px\"><b>Day</b></button>"
+    // TODO add Month button functionality
     + "<button class=\"time-button\" style=\"right: 20px; width: 72px\"><b>Month</b></button>";
+    // set innerhtml for summary or workouts section
     document.getElementById(id).innerHTML = innerhtml;
     
+    // run the function that creates donut charts for summary module
     if (id === 'summary'){
         drawCharts('today', 'summary');  
     }
 }
 
 function weekdayClick(id, day){
-    // displays in week view of workouts module
+    // hardcoded weekly workouts data
     weekWorkouts = [
         ['Sunday', 'yoga', '40 minute'],
         ['Monday', 'run', 'swim', '1.2 mile', '0.5 mile'],
@@ -51,11 +61,14 @@ function weekdayClick(id, day){
     if(id === 'summary'){
         document.getElementsByClassName('time-button').innerHTML = "";
         innerhtml = "<div class=\"subtitle\"><b>Summary</b></div>"
+        // pressing "Week" after pressing on a day of week button takes you back to day of week button page
         + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('summary')\"><b>Week</b></button>"
+        // add HTML canvases for the donut charts for steps/exercise for each week day
         + "<canvas id=\"stepsPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:-5%\"></canvas>"
         + "<canvas id =\"exerPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:50%\"></canvas>";
         
         switch(day){
+            // add different labels for each day of week step + exercise count
             case 'Sunday':
                 innerhtml += 
                 "<div class=\"step-count\"><b>Steps : 1500/10000</b></div> <div class=\"exercise-count\"><b>Exercise : 40/60 min</b></div>";
@@ -81,11 +94,14 @@ function weekdayClick(id, day){
             default: 
 
         }
-
+        // add subtitle that says what day of week you are looking at
         innerhtml += "<div class=\"day-title\"><b>" + day + "</b></div>"
         + "<button class=\"time-button\" style=\"right: 190px\" onclick=\"dayClick('summary')\"><b>Day</b></button>"
+        // TODO add month button functionality 
         + "<button class=\"time-button\" style=\"right: 20px; width: 72px\"><b>Month</b></button>";
+
         document.getElementById(id).innerHTML = innerhtml;
+        // run drawCharts to create donut based on day of week
         drawCharts(day, 'summary');
     } else if (id === 'workouts') {
         document.getElementById(id).innerHTML = "";
@@ -96,6 +112,7 @@ function weekdayClick(id, day){
         + "<button class=\"time-button\" style=\"right: 20px; width: 72px\"><b>Month</b></button>";
        
         switch(day){
+            // add text + icons for each day of week's workouts
             case 'Sunday':
                 document.getElementById(id).innerHTML +=
                 " <div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:110px;left:80px\">"
@@ -162,6 +179,7 @@ function weekdayClick(id, day){
 
 function weekClick(id){
     innerhtml = "";
+    // add respective "Day" buttons for summary and workouts sections
     if(id === 'summary'){
         innerhtml = "<div class=\"subtitle\"><b>Summary</b></div>"
         +"<button class=\"time-button\" style=\"right: 190px\" onclick=\"dayClick('summary')\"><b>Day</b></button>";
@@ -169,6 +187,9 @@ function weekClick(id){
         innerhtml = "<div class=\"subtitle\"><b>Workouts</b></div>"
         + "<button class=\"time-button\" style=\"right: 190px\" onclick=\"dayClick('workouts')\"><b>Day</b></button>";
     }
+
+    // add day of week buttons that have different functionalities based on the module they are in
+    // if in summary, shows donut charts, if in workouts, shows workouts done that day
     innerhtml += "<button class=\"time-button\" style=\"right: 110px; width: 62px\"><b>Week</b></button>"
     + "<button class=\"time-button\" style=\"right: 20px; width: 72px\"><b>Month</b></button>"
     + "<button class=\"day-button\" style=\"left:30px\" onclick = \"weekdayClick('" + id + "','Sunday')\"><b>Su</b></button>"
@@ -183,6 +204,7 @@ function weekClick(id){
 }
 
 function macroView(){
+    // if calories consumed chart is clicked, show nutrition breakdown with icons
     document.getElementById('nutrition').innerHTML = 
     "<div class=\"subtitle\"><b>Nutrition</b></div> <div class=\"day-title\"><b>Today</b></div>"
     + "<button class=\"time-button\" onclick = \"back()\" style=\"right: 20px; width: 72px\"><b>Back</b></button>"
@@ -197,8 +219,9 @@ function macroView(){
     + "<b>8g fats</b></div>";
 }
 
-//for nutrition tab
+//for the back button in the nutrition section
 function back(){
+    // back button takes user back to donut chart view 
     document.getElementById('nutrition').innerHTML = 
     "<div class=\"subtitle\"><b>Nutrition</b></div> <div class=\"day-title\"><b>Today</b></div>"
     + "<canvas id=\"consumePie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:-5%\" onclick = \"macroView()\"></canvas>"
@@ -208,6 +231,7 @@ function back(){
     drawCharts('today','nutrition');
 }
 
+// uses chart.js to draw the donut charts for the different sections
 function drawCharts(day, id){
     var ctxstep = document.getElementById("stepsPie");
     var ctxex = document.getElementById("exerPie");
@@ -215,7 +239,7 @@ function drawCharts(day, id){
     var ctxburn = document.getElementById("burnPie");
 
     var steps = [];
-    var mins = [33, 67];
+    var mins = [];
     var label = ['', ''];
     var consumed = [55, 65];
     var burned = [70, 30];
