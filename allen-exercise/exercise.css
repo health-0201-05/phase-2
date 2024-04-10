@@ -8,7 +8,8 @@
     border: 1px solid white;
     border-radius: 15px;
     width: 50%;
-    margin: 25px
+    margin: 25px;
+    background-color: #333333;
 }
 
 .progcontainer {
@@ -145,10 +146,7 @@
     text-align: left;
     /* outline: none; */
     font-size: 15px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-radius: 15px;
   }
   #modalcreate:hover {
     background-color: #0d6d3f;
@@ -163,6 +161,10 @@
 
   }
 
+  .workoutadd:hover {
+    background-color: #0d6d3f;
+  }
+
   .workoutrm {
     background-color: #ff455e;
     border: none;
@@ -170,4 +172,33 @@
     margin: 10px;
     border-radius: 5px;
 
+  }
+  .workoutrm:hover {
+    background-color: #aa2d3d;
+    
+  }
+
+  #w-edit {
+    background-color: #08a6df;
+    border: none;
+    padding: 5px;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+
+  .excreate {
+    background-color: #08a6df;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+
+  }
+
+  .workout-edit {
+    background-color: #08a6df;
+    border: none;
+    padding: 5px;
+    margin-top: 20px;
+    border-radius: 5px;
   }
