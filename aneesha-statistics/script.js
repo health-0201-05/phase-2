@@ -306,8 +306,6 @@ function back(){
     + "<div class=\"progcontainer\" id = \"burned\" style=\"background-color:#FC8696;top:190px;\">"
     + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#FF455E;width: 70%\"></div></div>" 
     + "<div class=\"step-count\"><b>Consumed : 1110/2000 cals</b></div> <div class=\"exercise-count\"><b>Burned : 210/300 cals</b></div>";
-
-    drawCharts('today','nutrition');
 }
 
 function drawCharts(day){
