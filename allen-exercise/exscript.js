@@ -189,8 +189,18 @@ function edit({name, exercises, flag}, button, parent, index) {
         notice.textContent = 'Leave an exercise field blank to delete!'
         parent.appendChild(notice)
 
-
-        
+        let wname = document.createElement('input')
+        wname.type = 'input'
+        wname.value = 'New workout name here!'
+        wname.id = 'nw'+index
+        let treeWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT,
+            {acceptNode: function(node) { 
+                             return NodeFilter.FILTER_ACCEPT;
+                         }
+             }, 
+             false );
+        treeWalker.currentNode = parent
+        treeWalker.previousNode().before(wname)
 
 
     } else { //when clicked again, return to normal
@@ -206,6 +216,13 @@ function edit({name, exercises, flag}, button, parent, index) {
                 data.userworkouts[ind].exercises.push(x.value)
         }
         
+        let nn = document.getElementById('nw'+index)
+        if(nn.value != 'New workout name here!'){
+            name = nn.value
+            data.userworkouts[ind].name = nn.value
+        }
+        
+
         regenerate()
         document.getElementById('coll'+name).click()
         
