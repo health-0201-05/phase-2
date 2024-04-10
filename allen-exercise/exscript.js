@@ -193,6 +193,8 @@ function edit({name, exercises, flag}, button, parent, index) {
         wname.type = 'input'
         wname.value = 'New workout name here!'
         wname.id = 'nw'+index
+        wname.style.padding = '5px'
+        wname.style.width = "35%"
         let treeWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT,
             {acceptNode: function(node) { 
                              return NodeFilter.FILTER_ACCEPT;
