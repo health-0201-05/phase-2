@@ -384,14 +384,14 @@ function trendClick(trend){
     } else if(trend === 'dist'){
         document.getElementById('trend').innerHTML +=
         "<img src= \"dist-chart.png\" style=\"position:absolute;top:20px;left:60px\">"
-        + "<div class = \"subtitle\" style = \"top:500px;left:15px;font-size:28px\"><b>Your total walking distance is up by 0.5 miles</b></div>";
+        + "<div class = \"subtitle\" style = \"top:500px;left:15px;font-size:28px\"><b>Your total walking distance is up by 0.5 miles since last month</b></div>";
     } else if(trend === 'mins'){
         document.getElementById('trend').innerHTML +=
         "<img src= \"exer-chart.png\" style=\"position:absolute;top:20px;left:60px\">"
-        + "<div class = \"subtitle\" style = \"top:500px;left:30px;font-size:28px\"><b>Your total exercise minutes are up by 20</b></div>";
+        + "<div class = \"subtitle\" style = \"top:500px;left:30px;font-size:28px\"><b>Your total exercise minutes are up by 20 since last month</b></div>";
     } else if(trend === 'cals'){
         document.getElementById('trend').innerHTML +=
         "<img src= \"cals-chart.png\" style=\"position:absolute;top:20px;left:60px\">"
-        + "<div class = \"subtitle\" style = \"top:500px;left:30px;font-size:28px\"><b>Your total calories burned is down by 50</b></div>";
+        + "<div class = \"subtitle\" style = \"top:500px;left:30px;font-size:28px\"><b>Your total calories burned is down by 50 since last month</b></div>";
     }
 }

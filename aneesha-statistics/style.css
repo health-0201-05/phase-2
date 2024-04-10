@@ -138,6 +138,10 @@ canvas {
   color:white;
 }
 
+.trend-module:hover{
+  background-color: #9CDFF7;
+}
+
 .progcontainer {
   position:absolute;
   width: 50%;
