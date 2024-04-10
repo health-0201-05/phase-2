@@ -285,7 +285,7 @@ function macroView(){
     // if calories consumed chart is clicked, show nutrition breakdown with icons
     document.getElementById('nutrition').innerHTML = 
     "<div class=\"subtitle\"><b>Nutrition</b></div> <div class=\"day-title\"><b>Today</b></div>"
-    + "<button class=\"time-button\" onclick = \"back()\" style=\"right: 20px; width: 72px\"><b>Back</b></button>"
+    + "<button class=\"time-button\" onclick = \"back('nutrition')\" style=\"right: 20px; width: 72px\"><b>Back</b></button>"
     + "<img src = \"./protein.png\" height = 80 style = \"position:absolute;top:120px;left:80px\">"
     + "<img src = \"./carb.png\" height = 80 style = \"position:absolute;top:250px;left:75px\">"
     + "<img src = \"./fat.png\" height = 80 style = \"position:absolute;top:380px;left:75px\">"
@@ -298,15 +298,27 @@ function macroView(){
 }
 
 //for the back button in the nutrition section
-function back(){
+function back(id){
     // back button takes user back to progress chart view 
-    document.getElementById('nutrition').innerHTML = 
-    "<div class=\"subtitle\"><b>Nutrition</b></div> <div class=\"day-title\"><b>Today</b></div>"
-    + "<div class=\"progcontainer\" id=\"consumed\" style=\"background-color:#9CDFF7;\" onclick = \"macroView()\">"
-    + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#08A6DF;width: 55%\"></div></div>"
-    + "<div class=\"progcontainer\" id = \"burned\" style=\"background-color:#FC8696;top:190px;\">"
-    + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#FF455E;width: 70%\"></div></div>" 
-    + "<div class=\"step-count\"><b>Consumed : 1110/2000 cals</b></div> <div class=\"exercise-count\"><b>Burned : 210/300 cals</b></div>";
+    if(id === 'nutrition'){
+        document.getElementById(id).innerHTML = 
+        "<div class=\"subtitle\"><b>Nutrition</b></div> <div class=\"day-title\"><b>Today</b></div>"
+        + "<div class=\"progcontainer\" id=\"consumed\" style=\"background-color:#9CDFF7;\" onclick = \"macroView()\">"
+        + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#08A6DF;width: 55%\"></div></div>"
+        + "<div class=\"progcontainer\" id = \"burned\" style=\"background-color:#FC8696;top:190px;\">"
+        + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#FF455E;width: 70%\"></div></div>" 
+        + "<div class=\"step-count\"><b>Consumed : 1110/2000 cals</b></div> <div class=\"exercise-count\"><b>Burned : 210/300 cals</b></div>";
+    } else if(id === 'trend'){
+        document.getElementById(id).innerHTML = "<div class=\"subtitle\"><b>Trends</b></div>"
+        + "<div class=\"trend-module\" id= \"cals\" style = \"top:90px;left:30px;font-size:20px\" onclick = \"trendClick('cals')\">"
+        + "<b>Calories Burned</b><br><br><b style=\"font-size:17px\">300 cal/day</b></div>"
+        + "<div class=\"trend-module\" id = \"mins\" style = \"top:90px;right:30px;font-size:20px\" onclick = \"trendClick('mins')\">"
+        + "<b>Exercise Minutes</b><br><br><b style=\"font-size:17px\">70 min/day</b></div>"
+        + "<div class=\"trend-module\" id = \"dist\" style = \"top:230px;left:30px;font-size:20px\" onclick = \"trendClick('dist')\">"
+        + "<b>Walking Distance</b><br><br><b style=\"font-size:17px\" >1.5 miles/day</b></div>"
+        + "<div class=\"trend-module\" id = \"bpm\" style = \"top:230px;right:30px;font-size:20px\" onclick = \"trendClick('bpm')\">"
+        + " <b>Heart Rate</b><br><br><b style=\"font-size:17px\">75 bpm</b></div>";
+    }
 }
 
 function drawCharts(day){
@@ -360,4 +372,26 @@ function drawCharts(day){
     "<div class=\"prog\" id=\"progbar\" style=\"background-color:#FF455E;width:" + steps.toString()+ "%\"></div>";
     document.getElementById('exercise').innerHTML =
     "<div class=\"prog\" id=\"progbar\" style=\"background-color:#1FC173;width:" + mins.toString()+ "%\"></div>";
+}
+
+function trendClick(trend){
+    document.getElementById('trend').innerHTML = 
+    "<button class=\"time-button\" onclick = \"back('trend')\" style=\"right: 20px; width: 72px\"><b>Back</b></button>";
+    if(trend === 'bpm'){
+        document.getElementById('trend').innerHTML +=
+        "<img src= \"bpm-chart.png\" style=\"position:absolute;top:20px;left:60px\">"
+        + "<div class = \"subtitle\" style = \"top:500px;left:15px\"><b>Your heart rate is down 5 bpm since last month</b></div>";
+    } else if(trend === 'dist'){
+        document.getElementById('trend').innerHTML +=
+        "<img src= \"dist-chart.png\" style=\"position:absolute;top:20px;left:60px\">"
+        + "<div class = \"subtitle\" style = \"top:500px;left:15px;font-size:28px\"><b>Your total walking distance is up by 0.5 miles</b></div>";
+    } else if(trend === 'mins'){
+        document.getElementById('trend').innerHTML +=
+        "<img src= \"exer-chart.png\" style=\"position:absolute;top:20px;left:60px\">"
+        + "<div class = \"subtitle\" style = \"top:500px;left:30px;font-size:28px\"><b>Your total exercise minutes are up by 20</b></div>";
+    } else if(trend === 'cals'){
+        document.getElementById('trend').innerHTML +=
+        "<img src= \"cals-chart.png\" style=\"position:absolute;top:20px;left:60px\">"
+        + "<div class = \"subtitle\" style = \"top:500px;left:30px;font-size:28px\"><b>Your total calories burned is down by 50</b></div>";
+    }
 }
