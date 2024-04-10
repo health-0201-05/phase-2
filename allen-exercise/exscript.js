@@ -2,7 +2,7 @@ var data = {
     suggested: [
         {
             name: "Suggested Workout 1",
-            exercises: ["ten pushups", "get beaten up by mike tyson", "large hadron colldier"]
+            exercises: ["ten pushups", "who is steve jobs?", "large hadron colldier"]
         },
         {
             name: "Suggested Workout 2",
@@ -19,12 +19,16 @@ var data = {
     ],
     userworkouts: [
         {
+            flag: true,
+
             name: "Workout 1",
-            exercises: ["Dark Souls 3 any%", "CoD Black Ops II Nuke", "GTA V campaign no deaths"]
+            exercises: ["Dark Souls 3 any%", "10 minute run", "TETRIS true killscreen"]
         },
         {
+            flag: true,
+
             name: "Workout 2",
-            exercises: ["\"THE PEERLESS UNDER HEAVEN\" SPA EX-Hard Clear AAA", "Wolfenstein II: The New Colossus Mein Leben clear", "GITADORA Stargazer MAS-G SS FC"]
+            exercises: ["beatmania IIDX 12 Hard Clear", "Wolfenstein II: The New Colossus Mein Leben clear", "50 sit-ups"]
         }
 
     ],
@@ -55,6 +59,16 @@ function assignListeners(){
             }
         });
     }
+    var but = document.getElementById('w-edit');
+    but.onclick = () => {
+        data.userworkouts.push( {
+            flag: true,
+            name: `Workout ${data.userworkouts.length+1}`,
+            exercises: []
+        })
+        regenerate()
+    }
+
 
     // Get the modal
     var modal = document.getElementById("myModal");
@@ -92,7 +106,7 @@ function addSuggToWorkout({name, exercises}){
     data.suggested.splice(i, 1)
 
     console.log(data.suggested)
-    data.userworkouts.push({name: name, exercises: exercises});
+    data.userworkouts.push({name: name, exercises: exercises, flag:true});
     regenerate()
 
 }
@@ -117,6 +131,92 @@ function regenerate(){
 
 
 }
+
+function edit({name, exercises, flag}, button, parent, index) {
+
+
+    if(flag){ // in editing
+        button.textContent = "Save changes"
+
+        let toRemove = parent.getElementsByTagName('label')
+
+        for (var i = toRemove.length - 1; i >= 0; i--) {
+            toRemove[i].textContent = ''
+        }
+
+        let inputs = parent.getElementsByTagName('input')
+        //console.log(inputs)
+        let ind = 0
+        //console.log(exercises)
+        for(x of inputs){
+            let t = document.createElement('input')
+            t.type = 'text'
+            t.value = exercises[ind]
+            t.style.width = '50%'
+            t.id = 'input'+name+ind
+            ind++
+            parent.replaceChild(t, x)
+        }
+
+
+        let addex = document.createElement('button')
+        addex.textContent = 'Create Exercise'
+        addex.className = 'excreate'
+        addex.onclick = () => {
+            let ind = data.userworkouts.findIndex((v, i, a)=>{
+                if(v.name == name){
+                    return true
+                }
+            })
+            let t = document.createElement('input')
+            t.type = 'text'
+            t.style.width = '50%'
+            if(parent.getElementsByTagName('input')[data.userworkouts[ind].exercises.length-1])
+                parent.getElementsByTagName('input')[data.userworkouts[ind].exercises.length-1]
+                .after(t)
+            else {
+                let rm = document.getElementById(name+ind)
+                rm.before(t)
+            }
+
+            t.after(document.createElement('br'))
+
+        }
+        parent.appendChild(addex)
+
+        let notice = document.createElement('p')
+        //console.log(inputs)
+        notice.textContent = 'Leave an exercise field blank to delete!'
+        parent.appendChild(notice)
+
+
+        
+
+
+    } else { //when clicked again, return to normal
+        let inputs = parent.getElementsByTagName('input')
+        let ind = data.userworkouts.findIndex((v, i, a)=>{
+            if(v.name == name){
+                return true
+            }
+        })
+        data.userworkouts[ind].exercises = []
+        for(x of inputs){
+            if(x.value.length > 0)
+                data.userworkouts[ind].exercises.push(x.value)
+        }
+        
+        regenerate()
+        document.getElementById('coll'+name).click()
+        
+
+
+    }
+
+    flag = !flag
+}
+
+
 function winonload(){
     let modal = document.getElementsByClassName("modalcontain")[0];
     let main = document.getElementById("exercises-container");
@@ -154,11 +254,14 @@ function winonload(){
         })
 
         let addToWorkout = document.createElement("button");
+        
         addToWorkout.className = "workoutadd"
         addToWorkout.textContent = "Add to workout"
+
         addToWorkout.onclick = () =>{
             addSuggToWorkout(v)
         }
+
         d.appendChild(addToWorkout)
 
         modal.appendChild(e)
@@ -171,6 +274,7 @@ function winonload(){
         e.type = "button"
         e.className = "collapsible"
         e.textContent = v.name
+        e.id = 'coll'+v.name
 
         let d = document.createElement("div");
         d.className = "collapsible-content"
@@ -195,12 +299,23 @@ function winonload(){
 
         let rm = document.createElement("button");
         rm.className = "workoutrm"
-        rm.textContent = "Remove from workout"
+        rm.textContent = "Delete this workout"
+        rm.id = v.name+i
         rm.onclick = () =>{
             removeFromWorkout(v)
         }
-        d.appendChild(rm)
 
+        let editWorkout = document.createElement("button")
+        editWorkout.textContent = "Edit workout"
+        editWorkout.className = 'workout-edit'
+        editWorkout.onclick = () => {
+            
+            edit(v, editWorkout, d, i)
+            v.flag = !v.flag
+        }
+
+        d.appendChild(rm)
+        d.appendChild(editWorkout)
 
         main.appendChild(e)
         main.appendChild(d)
