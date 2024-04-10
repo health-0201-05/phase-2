@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('JavaScript loaded!');
     // draw today's donut charts (summary and nutrition)
-    drawCharts('', 'start');
+    //drawCharts('', 'start');
     // open text tab first by default
     var item = document.getElementById('defaultOpen');
     //item.click();
@@ -17,8 +17,10 @@ function dayClick(id){
         // add a "Week" button that functions specifically for the Summary module
         + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('summary')\"><b>Week</b></button>"
         + "<button class=\"time-button\" style=\"right: 20px; width: 72px\" onclick = \"monthClick('summary')\"><b>Month</b></button>"
-        + "<canvas id=\"stepsPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:-5%\"></canvas>"
-        + "<canvas id =\"exerPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:50%\"></canvas>"
+        + "<div class=\"progcontainer\" style=\"background-color: #FC8696;\">"
+        + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#FF455E;width: 75%\"></div></div>"
+        + "<div class=\"progcontainer\" style=\"background-color: #91C7AD;top:190px;\">"
+        + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#1FC173;width: 83%\"></div></div>"
         + "<div class=\"step-count\"><b>Steps : 7500/10000</b></div>"
         + "<div class=\"exercise-count\"><b>Exercise : 50/60 min</b></div>";
     } else if (id === 'workouts'){ //if Day button clicked on Workouts module, display the day's workouts
@@ -42,13 +44,10 @@ function dayClick(id){
     document.getElementById(id).innerHTML = innerhtml;
     
     // run the function that creates donut charts for summary module
-    if (id === 'summary'){
-        drawCharts('today', 'summary');  
-    }
+    
 }
 
 function weekdayClick(id, day){
-    console.log(day)
     // hardcoded weekly workouts data
     weekWorkouts = [
         ['Sunday', 'yoga', '40 minute'],
@@ -65,9 +64,8 @@ function weekdayClick(id, day){
         innerhtml = "<div class=\"subtitle\"><b>Summary</b></div>"
         // pressing "Week" after pressing on a day of week button takes you back to day of week button page
         + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('summary')\"><b>Week</b></button>"
-        // add HTML canvases for the donut charts for steps/exercise for each week day
-        + "<canvas id=\"stepsPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:-5%\"></canvas>"
-        + "<canvas id =\"exerPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:50%\"></canvas>";
+        + "<div class=\"progcontainer\" id=\"step\" style=\"background-color: #FC8696;\"></div>"
+        + " <div class=\"progcontainer\" id = \"exercise\" style=\"background-color: #91C7AD;top:190px;\"></div>";
         
         switch(day){
             // add different labels for each day of week step + exercise count
@@ -293,11 +291,11 @@ function macroView(){
     + "<img src = \"./carb.png\" height = 80 style = \"position:absolute;top:250px;left:75px\">"
     + "<img src = \"./fat.png\" height = 80 style = \"position:absolute;top:380px;left:75px\">"
     + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:145px;left:200px\">"
-    + "<b>15g protein</b></div>"
+    + "<b>8g protein</b></div>"
     + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:275px;left:200px\">"
-    + "<b>20g carbs</b></div>"
+    + "<b>15g carbs</b></div>"
     + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:405px;left:200px\">"
-    + "<b>8g fats</b></div>";
+    + "<b>3g fats</b></div>";
 }
 
 //for the back button in the nutrition section
@@ -305,150 +303,64 @@ function back(){
     // back button takes user back to donut chart view 
     document.getElementById('nutrition').innerHTML = 
     "<div class=\"subtitle\"><b>Nutrition</b></div> <div class=\"day-title\"><b>Today</b></div>"
-    + "<canvas id=\"consumePie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:-5%\" onclick = \"macroView()\"></canvas>"
-    + "<canvas id =\"burnPie\" style=\"width:100%;max-width:300px;position:absolute;top:30%;left:50%\"></canvas>"
+    + "<div class=\"progcontainer\" id=\"consumed\" style=\"background-color:#9CDFF7;\" onclick = \"macroView()\">"
+    + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#08A6DF;width: 55%\"></div></div>"
+    + "<div class=\"progcontainer\" id = \"burned\" style=\"background-color:#FC8696;top:190px;\">"
+    + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#FF455E;width: 70%\"></div></div>" 
     + "<div class=\"step-count\"><b>Consumed : 1110/2000 cals</b></div> <div class=\"exercise-count\"><b>Burned : 210/300 cals</b></div>";
 
     drawCharts('today','nutrition');
 }
 
-// uses chart.js to draw the donut charts for the different sections
 function drawCharts(day, id){
-    var ctxstep = document.getElementById("stepsPie");
-    var ctxex = document.getElementById("exerPie");
-    var ctxconsume = document.getElementById("consumePie");
-    var ctxburn = document.getElementById("burnPie");
+    var steps;
+    var mins; 
 
-    var steps = [];
-    var mins = [];
-    var label = ['', ''];
-    var consumed = [55, 65];
-    var burned = [70, 30];
-
+    // change percentage for steps and exercise mins based on what day it is
     switch(day){
         case '7': case '14': case '21': case '28':
         case 'Sunday':
-            steps = [15, 85];
-            mins = [67, 33];
+            steps = 85;
+            mins = 67;
             break;
         case '1': case '8': case '15': case '22': case '29':
         case 'Monday': 
-            steps = [90, 10];
-            mins = [75,25];
+            steps = 90;
+            mins = 75;
             break;
         case '2': case '9': case '16': case '23': case '30':
         case 'Tuesday': 
-            steps = [100, 0];
-            mins = [100, 0];
+            steps = 100;
+            mins = 100;
             break;
         case '3': case '10': case '17': case '24':
         case 'Wednesday':
-            steps = [100, 0];
-            mins = [100, 0];
+            steps = 100;
+            mins = 100;
             break;
         case '4': case '11': case '18': case '25':
         case 'Thursday':
-            steps = [85, 15];
-            mins = [100, 0];
+            steps = 85;
+            mins = 100;
             break;
         case '5': case '12': case '19': case '26':
         case 'Friday':
-            steps = [20, 80];
-            mins = [25, 75];
+            steps = 20;
+            mins = 25;
             break;
         case '6': case '13': case '20': case '27':
         case 'Saturday':
-            steps = [75, 25];
-            mins = [83, 17];
+            steps = 75;
+            mins = 83;
             break;
         default:
-            steps = [75,25];
-            mins = [83, 17]
+            steps = 75;
+            mins = 83;
     }
 
-    // steps counter ring
-    if(id === 'summary' || id === 'start'){
-        var myChart = new Chart(ctxstep, {
-        type: 'doughnut',
-        data: {
-            labels : label,
-            datasets: [
-            {
-                data: steps,
-                backgroundColor : ['#FF455E', '#FCA7B2'],
-                borderColor : ['#333333', '#333333'],
-                borderWidth : 1
-            },
-            ]
-        },
-        options : {
-            legend : {
-            display : false
-            }
-        }
-        });
-
-        // exercise pie chart
-        var myChart = new Chart(ctxex, {
-        type: 'doughnut',
-        data: {
-            labels : label,
-            datasets: [
-            {
-                data: mins,
-                backgroundColor : ['#1FC173', '#91C7AD'],
-                borderColor : ['#333333', '#333333'],
-                borderWidth : 1
-            },
-            ]
-        },
-        options : {
-            legend : {
-            display : false
-            }
-        }
-        });
-    }
-    
-    if(id === 'nutrition' || id === 'start'){
-        var myChart = new Chart(ctxconsume, {
-            type: 'doughnut',
-            data: {
-                labels : label,
-                datasets: [
-                {
-                    data: consumed,
-                    backgroundColor : ['#08A6DF', '#9CDFF7'],
-                    borderColor : ['#333333', '#333333'],
-                    borderWidth : 1
-                },
-                ]
-            },
-            options : {
-                legend : {
-                display : false
-                }
-            }
-        });
-    
-        var myChart = new Chart(ctxburn, {
-            type: 'doughnut',
-            data: {
-                labels : label,
-                datasets: [
-                {
-                    data: burned,
-                    backgroundColor : ['#FF455E', '#FCA7B2'],
-                    borderColor : ['#333333', '#333333'],
-                    borderWidth : 1
-                },
-                ]
-            },
-            options : {
-                legend : {
-                display : false
-                }
-            }
-        });
-    }
+    // make the progress bars
+    document.getElementById('step').innerHTML =
+    "<div class=\"prog\" id=\"progbar\" style=\"background-color:#FF455E;width:" + steps.toString()+ "%\"></div>";
+    document.getElementById('exercise').innerHTML =
+    "<div class=\"prog\" id=\"progbar\" style=\"background-color:#1FC173;width:" + mins.toString()+ "%\"></div>";
 }
