@@ -1,11 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('JavaScript loaded!');
-
-    // open text tab first by default
-    var item = document.getElementById('defaultOpen');
-    item.click();
-});
-
 // opens the tab that user clicks on
 // based on w3schools tutorial https://www.w3schools.com/howto/howto_js_tabs.asp
 function openTab(evt, tabName) {
