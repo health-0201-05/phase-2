@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('JavaScript loaded!');
-    // draw today's donut charts (summary and nutrition)
-    //drawCharts('', 'start');
     // open text tab first by default
     var item = document.getElementById('defaultOpen');
     //item.click();
@@ -11,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function dayClick(id){
     document.getElementById(id).innerHTML = "";
     innerhtml = "";
-    // if "Day" button is clicked on the Summary module, display the day's donut chart 
+    // if "Day" button is clicked on the Summary module, display the day's progress chart 
     if(id === 'summary'){
         innerhtml = "<div class=\"subtitle\"><b>Summary</b></div>"
         // add a "Week" button that functions specifically for the Summary module
@@ -43,7 +41,7 @@ function dayClick(id){
     // set innerhtml for summary or workouts section
     document.getElementById(id).innerHTML = innerhtml;
     
-    // run the function that creates donut charts for summary module
+    // run the function that creates progress charts for summary module
     
 }
 
@@ -112,7 +110,7 @@ function weekdayClick(id, day){
         + "<button class=\"time-button\" style=\"right: 20px; width: 72px\" onclick=\"monthClick('summary')\"><b>Month</b></button>";
 
         document.getElementById(id).innerHTML = innerhtml;
-        // run drawCharts to create donut based on day of week
+        // run drawCharts to create progress chart based on day of week
         drawCharts(day, 'summary');
     } else if (id === 'workouts') { // weekday buttons for workouts section
         document.getElementById(id).innerHTML = "<div class=\"subtitle\"><b>Workouts</b></div>";
@@ -213,7 +211,7 @@ function weekClick(id){
     }
 
     // add day of week buttons that have different functionalities based on the module they are in
-    // if in summary, shows donut charts, if in workouts, shows workouts done that day
+    // if in summary, shows progress charts, if in workouts, shows workouts done that day
     innerhtml += "<button class=\"time-button\" style=\"right: 110px; width: 62px\"><b>Week</b></button>"
     + "<button class=\"time-button\" style=\"right: 20px; width: 72px\"><b>Month</b></button>"
     + "<button class=\"day-button\" style=\"left:30px\" onclick = \"weekdayClick('" + id + "','Sunday')\"><b>Su</b></button>"
@@ -300,7 +298,7 @@ function macroView(){
 
 //for the back button in the nutrition section
 function back(){
-    // back button takes user back to donut chart view 
+    // back button takes user back to progress chart view 
     document.getElementById('nutrition').innerHTML = 
     "<div class=\"subtitle\"><b>Nutrition</b></div> <div class=\"day-title\"><b>Today</b></div>"
     + "<div class=\"progcontainer\" id=\"consumed\" style=\"background-color:#9CDFF7;\" onclick = \"macroView()\">"
@@ -312,7 +310,7 @@ function back(){
     drawCharts('today','nutrition');
 }
 
-function drawCharts(day, id){
+function drawCharts(day){
     var steps;
     var mins; 
 
@@ -358,7 +356,7 @@ function drawCharts(day, id){
             mins = 83;
     }
 
-    // make the progress bars
+    // make the progress bars for the summary sections
     document.getElementById('step').innerHTML =
     "<div class=\"prog\" id=\"progbar\" style=\"background-color:#FF455E;width:" + steps.toString()+ "%\"></div>";
     document.getElementById('exercise').innerHTML =
