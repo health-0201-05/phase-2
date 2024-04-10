@@ -204,16 +204,17 @@ function weekClick(id){
     // add respective "Day" buttons for summary and workouts sections
     if(id === 'summary'){
         innerhtml = "<div class=\"subtitle\"><b>Summary</b></div>"
-        +"<button class=\"time-button\" style=\"right: 190px\" onclick=\"dayClick('summary')\"><b>Day</b></button>";
+        +"<button class=\"time-button\" style=\"right: 190px\" onclick=\"dayClick('summary')\"><b>Day</b></button>"
+        + "<button class=\"time-button\" style=\"right: 20px; width: 72px\" onclick=\"monthClick('summary')\"><b>Month</b></button>";
     } else if (id === 'workouts'){
         innerhtml = "<div class=\"subtitle\"><b>Workouts</b></div>"
-        + "<button class=\"time-button\" style=\"right: 190px\" onclick=\"dayClick('workouts')\"><b>Day</b></button>";
+        + "<button class=\"time-button\" style=\"right: 190px\" onclick=\"dayClick('workouts')\"><b>Day</b></button>"
+        + "<button class=\"time-button\" style=\"right: 20px; width: 72px\" onclick=\"monthClick('workouts')\"><b>Month</b></button>";
     }
 
     // add day of week buttons that have different functionalities based on the module they are in
     // if in summary, shows progress charts, if in workouts, shows workouts done that day
     innerhtml += "<button class=\"time-button\" style=\"right: 110px; width: 62px\"><b>Week</b></button>"
-    + "<button class=\"time-button\" style=\"right: 20px; width: 72px\"><b>Month</b></button>"
     + "<button class=\"day-button\" style=\"left:30px\" onclick = \"weekdayClick('" + id + "','Sunday')\"><b>Su</b></button>"
     + "<button class=\"day-button\" style=\"left:110px\" onclick = \"weekdayClick('" + id + "','Monday')\"><b>M</b></button>"
     + "<button class=\"day-button\" style=\"left:190px\" onclick = \"weekdayClick('" + id + "','Tuesday')\"><b>T</b></button>"
