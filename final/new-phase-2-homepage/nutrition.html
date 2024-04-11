@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Tracker</title>
+    <link rel="stylesheet" href="nutrition-style.css">
+</head>
+<body>
+    <h1>Nutrition Tracker</h1>
+    <div id="progress-bars">
+        <div class="progress-bar-container" id="calories-progress">
+            <label>Calories</label>
+            <progress value="0" max="2000"></progress>
+        </div>
+        <div class="progress-bar-container" id="carbs-progress">
+            <label>Carbohydrates (g)</label>
+            <progress value="0" max="300"></progress>
+        </div>
+        <div class="progress-bar-container" id="protein-progress">
+            <label>Protein (g)</label>
+            <progress value="0" max="150"></progress>
+        </div>
+        <div class="progress-bar-container" id="fat-progress">
+            <label>Fat (g)</label>
+            <progress value="0" max="50"></progress>
+        </div>
+    </div>
+
+    <div id="added-foods">
+        <ul id="added-foods-list">
+            <!-- Added foods will be listed here -->
+        </ul>
+    </div>
+
+    <button id="add-food-btn">+</button>
+    <div id="food-menu" class="popup">
+        <span id="close-btn">&times;</span>
+        <ul id="food-list">
+            <!-- Food items will be populated here using JavaScript -->
+        </ul>
+    </div>
+
+    <script src="nutrition-script.js"></script>
+</body>
+</html>

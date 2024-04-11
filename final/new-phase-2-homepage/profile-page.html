@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="profile-style.css">
+</head>
+
+<body>
+    <div class="top-bar"></div>
+    <h1 class="page-title">Profile</h1>
+    
+    <button onClick="gotoHome()" class="back-button">
+        <img src="back-icon.png" alt="Back Image">
+    </button>
+
+    <div class="centered-prof-image">
+        <img src="profile-icon.png" alt="Centered Image">
+    </div>
+
+    <div class="info-item">
+        <p class="user-name" id="name">FirstName LastName</p>
+        <button class="edit-button" onclick="changeNamePrompt()">
+            <img class="inline-image" src="edit-icon.png">
+        </button>
+    </div>
+
+    <div class="info-item">
+        <p class="other-info" id="gender">Gender: Male</p>
+        <br>
+        <br>
+        <p class="other-info" id="age">Age: 25</p>
+        <br>
+        <p class="other-info">Height: </p><p class="user-height" id="height">5'11''</p>
+        <button class="edit-button" onclick="changeHeightPrompt()">
+            <img class="inline-image" src="edit-icon.png">
+        </button>
+    </div>
+
+    <div class="info-item">
+        <p class="other-info">Badges:</p>
+        
+        <div id="badges" class="grid-container">
+            <div onClick="openPopup();" class="grid-item" id="popupButton">+</div>
+        </div>
+    </div>
+    
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close" id="closePopup">&times;</span>
+            <h2>Add a new badge!</h2>
+            <p>Select a badge to add to your profile.
+            Your friends and others will be able to see these.
+            Add as many as you want and get linked with like-minded users.</p>
+            <p>More badges on the way.</p>
+            <div id="unpicked" class="grid-container2">
+                <div onClick="addBadge(1)" class="grid-item2" id="b1">
+                    <img class="badge-image" src="badge1.png">  
+                </div>
+                <div onClick="addBadge(2)" class="grid-item2" id="b2">
+                    <img class="badge-image" src="badge2.png">  
+                </div>
+                <div onClick="addBadge(3)" class="grid-item2" id="b3">
+                    <img class="badge-image" src="badge3.png">  
+                </div>
+                <div onClick="addBadge(4)" class="grid-item2" id="b4">
+                    4  
+                </div>
+                <div onClick="addBadge(5)" class="grid-item2" id="b5">
+                    5  
+                </div>
+                <div onClick="addBadge(6)" class="grid-item2" id="b6">
+                    6  
+                </div>
+                <div onClick="addBadge(7)" class="grid-item2" id="b7">
+                    7
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script src="profile-script.js"></script>
+</html>

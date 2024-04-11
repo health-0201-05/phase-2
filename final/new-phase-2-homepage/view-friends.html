@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="view-friends-style.css">
+</head>
+
+<body>
+    <div class="top-bar"></div>
+    <h1 class="page-title">Friends</h1>
+    <button onClick="gotoHome()" class="back-button">
+        <img src="back-icon.png" alt="Back Image">
+    </button>
+    
+    <div class="info-item">
+        <div class="button-container">
+            <button onClick="gotoAddFriends()" id="username-button" class="add-button">Add New Friends</button>
+        </div>
+    </div>
+    
+    <ul class="u-list" id="user-list">
+        <li id="user1">
+            <a>Noah</a>
+            <p class="user-id">ID: 1526</p>
+        </li>
+        <li id="user5">
+            <a>Emma</a> 
+            <p class="user-id">ID: 1112</p>
+        </li>
+        <li id="user7">
+            <a>Oliver</a>
+            <p class="user-id">ID: 0012</p>
+        </li>
+        <li id="user3">
+            <a>Sophia</a> 
+            <p class="user-id">ID: 1828</p>
+        </li>
+        <li id="user2">
+            <a>Elijah</a>
+            <p class="user-id">ID: 1426</p>
+        </li>
+        <li id="user6">
+            <a>Ava</a> 
+            <p class="user-id">ID: 1033</p>
+        </li>
+        <li id="user4">
+            <a>Levi</a> 
+            <p class="user-id">ID: 1543</p>
+        </li>
+        <li id="user0">
+            <a>Mia</a>
+            <p class="user-id">ID: 0014</p>
+        </li>
+        <li id="user8">
+            <a>Mia</a>
+            <p class="user-id">ID: 2514</p>
+        </li>
+    </ul>
+</body>
+<script src="view-friends-script.js"></script>
+</html>
