@@ -345,3 +345,8 @@ function winonload(){
     assignListeners()
 }
 window.onload = winonload;
+
+
+function goHome() {
+    window.location.replace("index.html?data="+window.location.href.split('?data=')[1]);
+}
