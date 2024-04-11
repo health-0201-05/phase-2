@@ -33,6 +33,10 @@ document.getElementById('close-btn').addEventListener('click', function() {
     document.getElementById('food-menu').style.display = 'none';
 });
 
+function goHome() {
+    window.location.replace("index.html?data="+window.location.href.split('?data=')[1]);
+}
+
 function populateFoods() {
     const foodList = document.getElementById('food-list');
     foodList.innerHTML = '';
