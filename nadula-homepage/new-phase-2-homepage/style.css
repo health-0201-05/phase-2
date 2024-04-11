@@ -1,6 +1,5 @@
 .home-button {
-	background-color: #ffffff; /* Green */
-	color: black;
+	background-color: #333333;
 	padding: 10px 20px;
 	text-align: center;
 	display: block;
@@ -9,11 +8,15 @@
 	border-radius: 10px;
 	width: 90%;
 	height: 210px;
-	border: 5px solid #4CAF50;
+	border: none;
+}
+
+.home-page-body {
+	background-color:#141414
 }
 
 .home-button:hover {
-	background-color: #9aa69a;
+	background-color: #707070;
 }
 
 /* Hamburger Button Styles */
@@ -28,7 +31,7 @@
 .hamburger-menu .bar {
 	width: 30px;
 	height: 4px;
-	background-color: #333;
+	background-color: #000000;
 	margin: 6px 0;
 	transition: 0.4s;
 }
@@ -40,7 +43,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	background-color: #f2f2f2;
+	background-color: #757575;
 	overflow-x: hidden;
 	transition: 0.5s;
 	padding-top: 60px;
@@ -50,8 +53,9 @@
 .menu a {
 	padding: 10px 15px;
 	text-decoration: none;
-	font-size: 25px;
-	color: #333;
+	font-size: 40px;
+	font-family: Arial, Verdana, sans-serif;
+	color: #fff;
 	display: block;
 	transition: 0.3s;
 }
@@ -80,7 +84,7 @@ body.menu-open .overlay {
     top: 0; /* Align to the top of the viewport */
     left: 0; /* Align to the left side */
     width: 100%; /* Take up the full width of the viewport */
-    background-color: #fff; /* Background color of the bar */
+    background-color: #FF455e; /* Background color of the bar */
 	height: 70px;
     z-index: 1; /* Ensure it appears above other content */
 }
@@ -101,14 +105,14 @@ body.menu-open .overlay {
 	padding: 66px;
 	margin: 0px 11px;
 	transform: translateX(31px);
-	background-color: #ffffff; /* Green */
+	background-color: #333333; /* Green */
 	color: black;
 	text-align: center;
 	display: block;
 	font-size: 16px;
 	border-radius: 10px;
 	height: 300px;
-	border: 5px solid #0ac9a4;
+	border: none;
 }
 
 .profile-button {

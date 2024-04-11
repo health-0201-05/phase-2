@@ -7,26 +7,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="home-page-body">
     <div class="hamburger-menu" onclick="toggleMenu()">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
     </div>
 
-    <a href="profile-page.html">
-        <button class="profile-button">
-            <img src="profile-icon.png" alt="Profile Image">
-        </button>
-    </a>
+    <button class="profile-button" onClick="gotoProfile()">
+        <img src="profile-icon.png" alt="Profile Image">
+    </button>
     
     <div class="top-bar"></div>
     
     <div class="menu" id="menu">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
+        <a onClick="gotoExercise()">Exercise</a>
+        <a onClick="gotoNutrition()">Nutrition</a>
+        <a onClick="gotoStats()">Stats</a>
+        <a onClick="gotoFriends()">Friends</a>
     </div>
     
     <div class="overlay" onclick="toggleMenu()"></div>

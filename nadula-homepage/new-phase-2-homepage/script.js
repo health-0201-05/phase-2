@@ -1,13 +1,32 @@
-document.addEventListener('DOMContentLoaded', () => {
+let params = window.location.href.split('?data=')[1];
+
+document.addEventListener('DOMContentLoaded', ()=>{
     console.log('JavaScript loaded!');
+
+    entries.addEventListener('touchstart', e=>{
+        touchstartX = e.changedTouches[0].screenX;
+    })
+
+    entries.addEventListener('touchend', e=>{
+        touchendX = e.changedTouches[0].screenX;
+        checkDirection()
+    })
 });
 
+function gotoProfile() {
+    window.location.replace("profile-page.html?data="+params);
+}
+
+function gotoFriends() {
+    window.location.replace("view-friends.html?data="+params);
+}
+
 function openMenu() {
-  document.getElementById("menu").style.width = "250px";
+    document.getElementById("menu").style.width = "250px";
 }
 
 function closeMenu() {
-  document.getElementById("menu").style.width = "0";
+    document.getElementById("menu").style.width = "0";
 }
 
 function toggleMenu() {
@@ -15,13 +34,13 @@ function toggleMenu() {
     var overlay = document.querySelector(".overlay");
     document.body.classList.toggle("menu-open");
     if (menu.style.width === "250px") {
-      menu.style.width = "0";
-      overlay.style.display = "none";
-      document.body.style.overflow = '';
+        menu.style.width = "0";
+        overlay.style.display = "none";
+        document.body.style.overflow = '';
     } else {
-      document.body.style.overflow = 'hidden';
-      menu.style.width = "250px";
-      overlay.style.display = "block";
+        document.body.style.overflow = 'hidden';
+        menu.style.width = "250px";
+        overlay.style.display = "block";
     }
 }
 
@@ -33,33 +52,24 @@ let touchendX = 0;
 let curEntry = 1;
 let numEntries = entries.getElementsByTagName('*').length;
 let curTranslate = 0;
-    
+
 function checkDirection() {
-  if (touchendX < touchstartX && touchstartX-touchendX > 50){
-    console.log('swiped left! %d',touchstartX-touchendX)
-    if (curEntry < numEntries){
-      entries.style.transition = 'transform 0.3s ease-in-out';
-      curTranslate += -572;
-      entries.style.transform = `translateX(${curTranslate}px)`;
-      curEntry++;
+    if (touchendX < touchstartX && touchstartX - touchendX > 50) {
+        console.log('swiped left! %d', touchstartX - touchendX)
+        if (curEntry < numEntries) {
+            entries.style.transition = 'transform 0.3s ease-in-out';
+            curTranslate += -572;
+            entries.style.transform = `translateX(${curTranslate}px)`;
+            curEntry++;
+        }
     }
-  } 
-  if (touchendX > touchstartX && touchendX-touchstartX > 50){
-    console.log('swiped right! %d',touchendX-touchstartX)
-    if (curEntry > 1){
-      entries.style.transition = 'transform 0.3s ease-in-out';
-      curTranslate += 572;
-      entries.style.transform = `translateX(${curTranslate}px)`;
-      curEntry--;
+    if (touchendX > touchstartX && touchendX - touchstartX > 50) {
+        console.log('swiped right! %d', touchendX - touchstartX)
+        if (curEntry > 1) {
+            entries.style.transition = 'transform 0.3s ease-in-out';
+            curTranslate += 572;
+            entries.style.transform = `translateX(${curTranslate}px)`;
+            curEntry--;
+        }
     }
-  } 
 }
-
-entries.addEventListener('touchstart', e => {
-  touchstartX = e.changedTouches[0].screenX;
-})
-
-entries.addEventListener('touchend', e => {
-  touchendX = e.changedTouches[0].screenX;
-  checkDirection()
-})
