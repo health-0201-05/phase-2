@@ -60,7 +60,7 @@ const entries = document.querySelector('.gallery-entries');
 let touchstartX = 0;
 let touchendX = 0;
 let curEntry = 1;
-let numEntries = entries.getElementsByTagName('*').length;
+let numEntries = 3;
 let curTranslate = 0;
 
 function checkDirection() {

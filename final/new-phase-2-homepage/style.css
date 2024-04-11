@@ -3,7 +3,6 @@
 	padding: 10px 20px;
 	text-align: center;
 	display: block;
-	font-size: 16px;
 	margin: 30px auto;
 	border-radius: 10px;
 	width: 90%;
@@ -106,6 +105,17 @@ body.menu-open .overlay {
 .gal-text {
 	display: inline;
 	text-wrap: balance;
+}
+
+.big-button-text {
+	color: white;
+	font-family: Arial, Verdana, sans-serif;
+	font-size: 30px;	
+}
+
+.big-button-img {
+	display: inline;
+	height: 170px;
 }
 
 .gallery-entries {

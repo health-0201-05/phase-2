@@ -65,10 +65,26 @@
         </div>
     </div>
     
-    <button class="home-button" id="firsthome">Click Me</button>
-    <button class="home-button">Click Me</button>
-    <button class="home-button">Click Me</button>
-    <button class="home-button">Click Me</button>
+    <button onClick="gotoExercise()" class="home-button" id="firsthome">
+        <div class="half-text">   
+            <p class="big-button-text">You missed your last exercise.
+            <br> Catch up now!</p>
+            <img class="big-button-img" src="run.png"></img>
+        </div>
+    </button>
+    <button onClick="gotoNutrition()" class="home-button">
+        <div class="half-text">   
+            <p class="big-button-text">Please add your most recent meal!</p>
+            <img class="big-button-img" src="carb.png"></img>
+        </div>
+    </button>
+    <button onClick="gotoStats()" class="home-button">
+        <div class="half-text">   
+            <p class="big-button-text">You've been on a roll!
+            <br> Check out your stats for a more in-depth analysis.</p>
+            <img class="big-button-img" src="stairmaster.png"></img>
+        </div>
+    </button>
     
 </body>
 <script src="script.js"></script>
