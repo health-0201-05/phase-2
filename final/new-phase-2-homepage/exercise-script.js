@@ -2,19 +2,19 @@ var data = {
     suggested: [
         {
             name: "Suggested Workout 1",
-            exercises: ["ten pushups", "who is steve jobs?", "large hadron colldier"]
+            exercises: ["ten pushups", "20lb dumbbell chest press", "20 minute ellipse"]
         },
         {
             name: "Suggested Workout 2",
-            exercises: ["crip walk", "fly with united airlines", "beatmania IIDX 31: EPOLIS"]
+            exercises: ["30 minute walk outside", "50x 1lb dumbbell curls", "20 sit ups"]
         },
         {
             name: "Suggested Workout 3",
-            exercises: ["3y3s", "CVSHealth Premium Care Probiotic", "5 minute twerk"]
+            exercises: ["5 minute plank", "20 pretzel twists", "30 sit ups"]
         },
         {
             name: "Suggested Workout 4",
-            exercises: ["smashing wedge", "CR2032 Coin Battery", "i am green"]
+            exercises: ["20x 50lb squats", "10 minute squat stance", "2 mile jog"]
         }
     ],
     userworkouts: [
@@ -22,13 +22,13 @@ var data = {
             flag: true,
 
             name: "Workout 1",
-            exercises: ["Dark Souls 3 any%", "10 minute run", "TETRIS true killscreen"]
+            exercises: ["5x 65lb bench press", "10 minute run", "30lb bar curls"]
         },
         {
             flag: true,
 
             name: "Workout 2",
-            exercises: ["beatmania IIDX 12 Hard Clear", "Wolfenstein II: The New Colossus Mein Leben clear", "50 sit-ups"]
+            exercises: ["100m dash", "20 pull ups", "50 sit-ups"]
         }
 
     ],
