@@ -43,7 +43,7 @@ function populateFoods() {
     foods.forEach((food, index) => {
         const li = document.createElement('li');
         li.innerHTML = `
-            ${food.name} - Calories: ${food.calories}, Carbs: ${food.carbs}g, Protein: ${food.protein}g, Fat: ${food.fat}g
+            ${food.name}
             <div class="input-button-container">
                 <input type="number" value="1" min="0" step="any" id="food-quantity-${index}">
                 <button onclick="addFood(${index})">Add</button>
