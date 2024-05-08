@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 2 Prototype</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="home-page-body">
+    <div class="hamburger-menu" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <button class="profile-button" onClick="gotoProfile()">
+        <img src="profile-icon.png" alt="Profile Image">
+    </button>
+    
+    <div class="top-bar"></div>
+    
+    <div class="menu" id="menu">
+        <a onClick="gotoExercise()">Exercise</a>
+        <a onClick="gotoNutrition()">Nutrition</a>
+        <a onClick="gotoStats()">Stats</a>
+        <a onClick="gotoFriends()">Friends</a>
+    </div>
+    
+    <div class="overlay" onclick="toggleMenu()"></div>
+
+
+    <div class="gallery">
+        <div class="gallery-entries">
+            <button onClick="gotoStats()">
+                <div class="half-text">   
+                    <p class="gal-text">
+                        <b>Calorie Trends:</b>
+                        <br> <br>
+                        Your calorie intake is decreasing over time
+                    </p>
+                    <img class="gal-img" src="cals-chart.png"></img>
+                </div>
+            </button>
+            <button onClick="gotoStats()">
+                <div class="half-text">   
+                    <p class="gal-text">
+                        <b>Exercise Trends:</b>
+                        <br> <br>
+                        Your time (min) exercising is steadily increasing
+                    </p>
+                    <img class="gal-img" src="exer-chart.png"></img>
+                </div>
+            </button>
+            <button onClick="gotoStats()">
+                <div class="half-text">   
+                    <p class="gal-text">
+                        <b>Distance Trends:</b>
+                        <br> <br>
+                        Your distance (miles) walking is steadily increasing
+                    </p>
+                    <img class="gal-img" src="dist-chart.png"></img>
+                </div>
+            </button>
+        </div>
+    </div>
+    
+    <button onClick="gotoExercise()" class="home-button" id="firsthome">
+        <div class="half-text">   
+            <p class="big-button-text">You missed your last exercise.
+            <br> Catch up now!</p>
+            <img class="big-button-img" src="run.png"></img>
+        </div>
+    </button>
+    <button onClick="gotoNutrition()" class="home-button">
+        <div class="half-text">   
+            <p class="big-button-text">Please add your most recent meal!</p>
+            <img class="big-button-img" src="carb.png"></img>
+        </div>
+    </button>
+    <button onClick="gotoStats()" class="home-button">
+        <div class="half-text">   
+            <p class="big-button-text">You've been on a roll!
+            <br> Check out your stats for a more in-depth analysis.</p>
+            <img class="big-button-img" src="stairmaster.png"></img>
+        </div>
+    </button>
+    
+</body>
+<script src="script.js"></script>
+</html>
