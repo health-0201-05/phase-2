@@ -15,8 +15,8 @@ function dayClick(id){
         // add a "Week" button that functions specifically for the Summary module
         + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('summary')\"><b>Week</b></button>"
         + "<button class=\"time-button\" style=\"right: 20px; width: 72px\" onclick = \"monthClick('summary')\"><b>Month</b></button>"
-        + "<div class=\"progcontainer\" style=\"background-color: #FC8696;\">"
-        + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#FF455E;width: 75%\"></div></div>"
+        + "<div class=\"progcontainer\" style=\"background-color: #B5E4F5;\">"
+        + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#08A6DF;width: 75%\"></div></div>"
         + "<div class=\"progcontainer\" style=\"background-color: #91C7AD;top:190px;\">"
         + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#1FC173;width: 83%\"></div></div>"
         + "<div class=\"step-count\"><b>Steps : 7500/10000</b></div>"
@@ -62,7 +62,7 @@ function weekdayClick(id, day){
         innerhtml = "<div class=\"subtitle\"><b>Summary</b></div>"
         // pressing "Week" after pressing on a day of week button takes you back to day of week button page
         + "<button class=\"time-button\" style=\"right: 110px; width: 62px\" onclick=\"weekClick('summary')\"><b>Week</b></button>"
-        + "<div class=\"progcontainer\" id=\"step\" style=\"background-color: #FC8696;\"></div>"
+        + "<div class=\"progcontainer\" id=\"step\" style=\"background-color: #B5E4F5;\"></div>"
         + " <div class=\"progcontainer\" id = \"exercise\" style=\"background-color: #91C7AD;top:190px;\"></div>";
         
         switch(day){
@@ -290,11 +290,11 @@ function macroView(){
     + "<img src = \"./carb.png\" height = 80 style = \"position:absolute;top:250px;left:75px\">"
     + "<img src = \"./fat.png\" height = 80 style = \"position:absolute;top:380px;left:75px\">"
     + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:145px;left:200px\">"
-    + "<b>8g protein</b></div>"
+    + "<b>100g protein</b></div>"
     + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:275px;left:200px\">"
-    + "<b>15g carbs</b></div>"
+    + "<b>210g carbs</b></div>"
     + "<div style=\"color:white;font-family:arial;font-size:25px;text-align:left;position:absolute;top:405px;left:200px\">"
-    + "<b>3g fats</b></div>";
+    + "<b>60g fats</b></div>";
 }
 
 //for the back button in the nutrition section
@@ -303,11 +303,11 @@ function back(id){
     if(id === 'nutrition'){
         document.getElementById(id).innerHTML = 
         "<div class=\"subtitle\"><b>Nutrition</b></div> <div class=\"day-title\"><b>Today</b></div>"
-        + "<div class=\"progcontainer\" id=\"consumed\" style=\"background-color:#9CDFF7;\" onclick = \"macroView()\">"
-        + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#08A6DF;width: 55%\"></div></div>"
+        + "<div class=\"progcontainer\" id=\"consumed\" style=\"background-color:#FFE4B3;\" onclick = \"macroView()\">"
+        + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#FFB01F;width: 71%\"></div></div>"
         + "<div class=\"progcontainer\" id = \"burned\" style=\"background-color:#FC8696;top:190px;\">"
         + "<div class=\"prog\" id=\"progbar\" style=\"background-color:#FF455E;width: 70%\"></div></div>" 
-        + "<div class=\"step-count\"><b>Consumed : 1110/2000 cals</b></div> <div class=\"exercise-count\"><b>Burned : 210/300 cals</b></div>";
+        + "<div class=\"step-count\"><b>Consumed : 2000/2800 cals</b></div> <div class=\"exercise-count\"><b>Burned : 210/300 cals</b></div>";
     } else if(id === 'trend'){
         document.getElementById(id).innerHTML = "<div class=\"subtitle\"><b>Trends</b></div>"
         + "<div class=\"trend-module\" id= \"cals\" style = \"top:90px;left:30px;font-size:20px\" onclick = \"trendClick('cals')\">"
@@ -369,7 +369,7 @@ function drawCharts(day){
 
     // make the progress bars for the summary sections
     document.getElementById('step').innerHTML =
-    "<div class=\"prog\" id=\"progbar\" style=\"background-color:#FF455E;width:" + steps.toString()+ "%\"></div>";
+    "<div class=\"prog\" id=\"progbar\" style=\"background-color:#08A6DF;width:" + steps.toString()+ "%\"></div>";
     document.getElementById('exercise').innerHTML =
     "<div class=\"prog\" id=\"progbar\" style=\"background-color:#1FC173;width:" + mins.toString()+ "%\"></div>";
 }
