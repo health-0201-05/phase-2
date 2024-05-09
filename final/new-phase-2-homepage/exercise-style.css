@@ -58,9 +58,10 @@
     background-color: #1fc173;
     font-family: arial;
     color: black;
-    padding: 1%;
+    padding-top: 1px;
+    padding-bottom: 10px;
     text-align: right;
-    font-size: 10px;
+    font-size: 20px;
     border-radius: 15px;
     height: 50px;
 
@@ -88,7 +89,7 @@
     text-align: center;
 }
 .collapsible {
-    background-color: #777;
+    background-color: #252525;
     color: white;
     cursor: pointer;
     padding: 18px;
@@ -101,14 +102,22 @@
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-
-
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: 800;
     margin-top: 18px;
+    outline: solid 1px #1fc173;
+    box-shadow: none;
 }
 
 .active,
 .collapsible:hover {
     background-color: #555;
+    outline: none;
+    box-shadow: 0 1px 0 #1fc173 inset,
+                1px 0 0 #1fc173 inset,
+                -1px 0 0 #1fc173 inset;
+    
 }
 
 .collapsible-content {
@@ -121,7 +130,9 @@
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     font-family: arial;
-
+    box-shadow: 0 -1px 0 #1fc173 inset,
+    1px 0 0 #1fc173 inset,
+    -1px 0 0 #1fc173 inset;
 }
 
 
@@ -136,12 +147,12 @@
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
   }
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
+    background-color: #141414;
     margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
