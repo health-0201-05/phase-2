@@ -27,10 +27,25 @@ let addedFoods = [];
 
 document.getElementById('add-food-btn').addEventListener('click', function() {
     document.getElementById('food-menu').style.display = 'flex';
+    document.querySelector('.popup').style.display = 'flex';
+    document.querySelector('.help-menu').style.display = 'none';
+    document.querySelector('.back-button').style.display = 'none';
 });
 
 document.getElementById('close-btn').addEventListener('click', function() {
     document.getElementById('food-menu').style.display = 'none';
+    document.querySelector('.popup').style.display = 'none';
+    document.querySelector('.help-menu').style.display = 'block';
+    document.querySelector('.back-button').style.display = 'block';
+});
+
+document.querySelector('.help-toggle').addEventListener('click', function() {
+    var content = document.querySelector('.help-content');
+    if (content.style.display === 'block') {
+        content.style.display = 'none';
+    } else {
+        content.style.display = 'block';
+    }
 });
 
 function goHome() {
@@ -110,10 +125,50 @@ function updateProgressBars() {
     ['calories', 'carbs', 'protein', 'fat'].forEach(nutrient => {
         const progressBar = document.querySelector(`#${nutrient}-progress progress`);
         progressBar.value = progress[nutrient];
-        progressBar.addEventListener('click', () => {
-            alert(`${progressBar.value.toFixed(1)}/${progressBar.max} ${nutrient}`);
-        });
     });
 }
+
+document.getElementById('carbs-progress').addEventListener('click', function() {
+    displayNutrientDetails('carbs');
+});
+document.getElementById('protein-progress').addEventListener('click', function() {
+    displayNutrientDetails('protein');
+});
+document.getElementById('fat-progress').addEventListener('click', function() {
+    displayNutrientDetails('fat');
+});
+
+document.getElementById('close-nutrient-btn').addEventListener('click', function() {
+    document.getElementById('nutrient-details').style.display = 'none';
+    document.querySelector('.help-menu').style.display = 'block';
+    document.querySelector('.back-button').style.display = 'block';
+});
+
+function displayNutrientDetails(nutrient) {
+    const totalNutrient = addedFoods.reduce((total, food) => total + food[nutrient], 0);
+    const maxNutrient = document.querySelector(`#${nutrient}-progress progress`).getAttribute('max');
+
+    document.getElementById('nutrient-title').textContent = `Details for ${nutrient}`;
+    document.getElementById('nutrient-progress').textContent = `Current ${nutrient} intake: ${totalNutrient.toFixed(1)}g / ${maxNutrient}g`;
+
+    const nutrientFoodList = document.getElementById('nutrient-food-list');
+    nutrientFoodList.innerHTML = '';
+
+    addedFoods.filter(food => food[nutrient] > 0).forEach(food => {
+        const foodDetails = foods.find(f => f.calories * food.calories / food.calories === f.calories);
+        const li = document.createElement('li');
+        li.textContent = `${foodDetails.name}: ${food[nutrient].toFixed(1)}g`;
+        nutrientFoodList.appendChild(li);
+    });
+
+    if (nutrientFoodList.children.length === 0) {
+        nutrientFoodList.innerHTML = '<li>No foods contributing to this nutrient currently added.</li>';
+    }
+
+    document.getElementById('nutrient-details').style.display = 'block';
+    document.querySelector('.help-menu').style.display = 'none';
+    document.querySelector('.back-button').style.display = 'none';
+}
+
 
 document.addEventListener('DOMContentLoaded', populateFoods);

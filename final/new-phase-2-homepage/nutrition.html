@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="nutrition-style.css">
 </head>
 <body>
+    <div class="help-menu">
+        <button class="help-toggle">HELP</button>
+        <ul class="help-content">
+            <li>Item 1: Description</li>
+            <li>Item 2: Description</li>
+            <li>Item 3: Description</li>
+        </ul>
+    </div>
+
     <div class="top-bar"></div>
     <h1 class="page-title">Nutrition</h1>
 
@@ -34,17 +43,20 @@
     </div>
 
     <div id="added-foods">
-        <ul id="added-foods-list">
-            <!-- Added foods will be listed here -->
-        </ul>
+        <ul id="added-foods-list"></ul>
     </div>
 
     <button id="add-food-btn">+</button>
     <div id="food-menu" class="popup">
         <span id="close-btn">&times;</span>
-        <ul id="food-list">
-            <!-- Food items will be populated here using JavaScript -->
-        </ul>
+        <ul id="food-list"></ul>
+    </div>
+
+    <div id="nutrient-details" class="popup">
+        <span id="close-nutrient-btn">&times;</span>
+        <h2 id="nutrient-title"></h2>
+        <p id="nutrient-progress"></p>
+        <ul id="nutrient-food-list"></ul>
     </div>
 
     <script src="nutrition-script.js"></script>
